@@ -1,164 +1,391 @@
-# CONNECTech 2026 — Landing Page v2
+# CONNECT Tech 2026
 
-Landing page da **CONNECTech 2026 — Conferência de Tecnologia do ICET/UFAM**.
+Landing page oficial do **CONNECT Tech 2026 — Conferência de Tecnologia do ICET/UFAM**, desenvolvida em HTML, CSS e JavaScript puro.
 
-A versão foi reorganizada para ficar mais próxima da identidade institucional do CONNECTech 2025, com ajustes para 2026: três temas visuais, melhor responsividade, chamadas de trabalho mais completas, página separada para edições anteriores e acessibilidade funcional.
+O projeto apresenta informações do evento, programação, chamada para trabalhos, trilhas de submissão, organização, comitê científico, edições anteriores, recursos de acessibilidade e alternância de temas visuais.
 
-## Como executar
+---
 
-Você pode abrir o `index.html` diretamente no navegador.
+## Sobre o evento
 
-Recomendado para desenvolvimento local:
+O **CONNECT Tech** é um evento científico e tecnológico sem fins lucrativos, organizado no Instituto de Ciências Exatas e Tecnologia da Universidade Federal do Amazonas.
+
+A edição de 2026 será realizada em **Itacoatiara-AM**, com o tema:
+
+> Avanço exponencial de tecnologias, letramento digital e consumo sustentável da IA.
+
+---
+
+## Tecnologias utilizadas
+
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap Icons
+- Google Fonts
+- Node.js, apenas para servidor local de desenvolvimento
+
+---
+
+## Estrutura do projeto
+
+```txt
+.
+├── 404.html
+├── anais.html
+├── assets
+│   └── img
+│       ├── cards
+│       ├── evento
+│       ├── logos
+│       ├── sobre
+│       └── logos institucionais
+├── css
+│   └── styles.css
+├── index.html
+├── js
+│   └── script.js
+├── package.json
+├── README.md
+└── scripts
+    └── dev-server.mjs
+```
+
+---
+
+## Páginas
+
+### `index.html`
+
+Página principal do CONNECT Tech 2026.
+
+Contém:
+
+- seção inicial do evento;
+- seção sobre;
+- programação;
+- chamada para trabalhos;
+- trilhas de submissão;
+- organização;
+- comitê científico;
+- FAQ;
+- rodapé institucional;
+- painel de acessibilidade;
+- modal das trilhas.
+
+### `anais.html`
+
+Página com edições anteriores do CONNECT Tech.
+
+Contém links para:
+
+- CONNECT Tech 2025;
+- CONNECT Tech 2024;
+- anais publicados na plataforma SOL/SBC.
+
+### `404.html`
+
+Página personalizada para erro 404.
+
+---
+
+## Como executar localmente
+
+É necessário ter o Node.js instalado.
+
+Instale ou apenas execute diretamente:
 
 ```bash
 npm run dev
 ```
 
-O servidor tenta iniciar na porta `5173`. Se ela estiver ocupada, ele usa a próxima porta livre.
-
-Também funciona com Python:
+ou:
 
 ```bash
-python3 -m http.server 5173
+npm start
 ```
 
-Acesse:
+O servidor será iniciado em:
 
-```text
+```txt
 http://localhost:5173
 ```
 
-## Estrutura
+Caso a porta esteja em uso, o servidor tentará automaticamente a próxima porta disponível.
 
-```text
-connectech-2026-v2/
-├── index.html
-├── anais.html
-├── 404.html
-├── css/
-│   └── styles.css
-├── js/
-│   └── script.js
-├── assets/
-│   └── img/
-│       ├── connectech-logo-full.png
-│       ├── connectech-logo-symbol.png
-│       ├── connectech-symbol-small.png
-│       ├── icet-logo.png
-│       ├── ufam-logo.png
-│       ├── eng-software-logo.png
-│       ├── sbc-logo.png
-│       ├── navir-logo.png
-│       ├── logar-logo.png
-│       ├── casi-logo.png
-│       ├── realizacao-logos-row.png
-│       └── evento/
-│           └── amazonas-mosaico.png
-├── scripts/
-│   └── dev-server.mjs
-├── package.json
-├── .env.example
-└── .gitignore
+---
+
+## Configuração de porta
+
+O projeto usa a variável `PORT` para definir a porta do servidor local.
+
+Exemplo de arquivo `.env`:
+
+```env
+PORT=5173
 ```
 
-## Temas
+---
 
-O botão no navbar alterna entre três temas:
+## Arquivos principais
 
-1. **Aurora**: tema padrão, com base escura, azul, ciano, rosa e roxo.
-2. **Dark**: tema azul escuro institucional, sem fundos brancos.
-3. **Light**: tema claro, com fundos brancos e cinzas claros.
+### `css/styles.css`
 
-Os ícones mudam automaticamente:
+Arquivo principal de estilos do projeto.
 
-- estrela: Aurora;
-- lua: Dark;
-- sol: Light.
+Responsável por:
 
-A preferência fica salva no `localStorage`.
+- temas visuais;
+- layout responsivo;
+- header;
+- hero;
+- seção sobre;
+- cards da programação;
+- trilhas;
+- organização;
+- comitê científico;
+- FAQ;
+- rodapé;
+- modal;
+- painel de acessibilidade;
+- animações;
+- ajustes responsivos.
 
-## Conteúdo principal
+### `js/script.js`
 
-A página principal contém:
+Arquivo principal de comportamento.
 
-- Início;
-- Sobre;
-- Programação;
-- Chamada para Trabalhos;
-- Trilhas;
-- Organização;
-- Comitê Científico;
-- Perguntas Frequentes;
-- Footer.
+Responsável por:
 
-As **edições anteriores** ficam na página separada `anais.html`, acessível pelo navbar.
+- alternância de temas;
+- troca dinâmica da logo principal;
+- menu mobile;
+- botão voltar ao topo;
+- animações de entrada;
+- FAQ expansível;
+- modal das trilhas;
+- carrossel de organização;
+- carrosséis dos cards de programação;
+- painel de acessibilidade;
+- aumento e redução de fonte;
+- alto contraste;
+- leitura da página em voz alta.
 
-## Links configurados
+### `scripts/dev-server.mjs`
 
-- JEMS3/SBC: `https://jems3.sbc.org.br/?returnUrl=%2Fevents%2F343`
-- Templates SBC: `https://www.sbc.org.br/documentosinstitucionais/#relacoes-profissionais`
-- Anais SBC: `https://sol.sbc.org.br/index.php/connect`
-- CONNECTech 2025: `https://projetosufam.com.br/connectech2025/`
-- CONNECTech 2024: `https://projetosufam.com.br/connectech2024/`
-- UFAM: `https://ufam.edu.br/`
-- ICET: `https://www.icet.ufam.edu.br/`
-- CASI: `https://www.instagram.com/casi_ufam/`
-- Engenharia de Software: `https://www.icet.ufam.edu.br/ultimas-noticias/117-engenharia-de-software-it16.html`
-- Sistemas de Informação: `https://www.icet.ufam.edu.br/ultimas-noticias/122-sistemas-de-informacao-it01.html`
-- SBC: `https://www.sbc.org.br/`
-- Instituto Eldorado: `https://www.eldorado.org.br/`
+Servidor local simples em Node.js para desenvolvimento.
 
-## Substituição de imagens
+Ele serve arquivos estáticos do projeto e exibe a página `404.html` quando uma rota não é encontrada.
 
-A imagem do Amazonas usada na seção “Sobre” está em:
+---
 
-```text
-assets/img/evento/amazonas-mosaico.png
+## Temas disponíveis
+
+O site possui três temas:
+
+- `light` — tema claro padrão;
+- `dark` — tema escuro;
+- `aurora` — tema visual com tons de destaque.
+
+O botão de tema alterna na seguinte ordem:
+
+```txt
+light → dark → aurora → light
 ```
 
-Substitua esse arquivo por uma versão final criada no Figma, Photoshop ou Illustrator, usando fotos reais do evento.
+A preferência do usuário é salva no `localStorage`.
 
-Recomendação:
-
-- formato: PNG ou WebP;
-- largura aproximada: 900px a 1400px;
-- fundo transparente, se possível;
-- manter proporção horizontal, para encaixar bem no layout.
+---
 
 ## Acessibilidade
 
-O botão de acessibilidade permite:
+O projeto possui um painel de acessibilidade com:
 
-- aumentar ou reduzir fonte;
-- ativar alto contraste;
-- reduzir animações.
+- aumento de fonte;
+- redução de fonte;
+- leitura da página e das descrições das imagens;
+- alto contraste;
+- botão de voltar ao topo;
+- link de pular para o conteúdo.
 
-Também há:
+Para melhor funcionamento da leitura em voz alta, recomenda-se o uso do Google Chrome.
 
-- link “Pular para o conteúdo”;
-- foco visível;
-- botões com `aria-label`;
-- menu mobile com `aria-expanded`;
-- suporte a `prefers-reduced-motion`.
+---
 
-## Observações de manutenção
+## Assets
 
-- O botão “Inscrições” está desabilitado até o link do Even3 ser definido.
-- O e-mail no footer está definido como `connectech.icet@gmail.com`. Troque pelo contato oficial caso a organização use outro endereço.
-- A logo do Instituto Eldorado está como texto estilizado. Substitua por imagem oficial caso seja disponibilizada.
-- As logos devem ser mantidas em `assets/img/`.
+As imagens do projeto ficam em:
 
-## Publicação
-
-Para publicar, envie para o servidor:
-
-```text
-index.html
-anais.html
-404.html
-css/
-js/
-assets/
+```txt
+assets/img
 ```
 
-Não é necessário enviar `node_modules`, porque não há dependências locais.
+Principais pastas:
+
+```txt
+assets/img/logos
+assets/img/cards
+assets/img/sobre
+assets/img/evento
+```
+
+### Logos principais
+
+```txt
+assets/img/logos/connectech-logo-navbar.png
+assets/img/logos/connectech-logo-footer.png
+assets/img/logos/logo-light.png
+assets/img/logos/logo-dark.png
+assets/img/logos/logo-aurora.png
+```
+
+### Imagens da seção Sobre
+
+```txt
+assets/img/sobre/foto-01.png
+assets/img/sobre/foto-02.png
+...
+assets/img/sobre/foto-12.png
+```
+
+### Imagens da programação
+
+```txt
+assets/img/cards/img palestra
+assets/img/cards/img cursos
+assets/img/cards/img integração
+```
+
+---
+
+## Links importantes
+
+### Inscrições
+
+```txt
+https://www.even3.com.br/iii-connect-tech-conferencia-de-tecnologia-do-icet-758212/
+```
+
+### Submissões
+
+```txt
+https://jems3.sbc.org.br/?returnUrl=%2Fevents%2F343
+```
+
+### Templates SBC
+
+```txt
+https://www.sbc.org.br/documentosinstitucionais/#relacoes-profissionais
+```
+
+### Anais
+
+```txt
+https://sol.sbc.org.br/index.php/connect
+```
+
+---
+
+## Organização
+
+O CONNECT Tech 2026 é organizado por professores, discentes e centros acadêmicos dos cursos de Engenharia de Software e Sistemas de Informação do ICET/UFAM.
+
+Apoio institucional:
+
+- ICET/UFAM;
+- Universidade Federal do Amazonas;
+- Sociedade Brasileira de Computação;
+- CASI;
+- NAVIR;
+- LOGAR;
+- DevSociety;
+- parceiros e patrocinadores.
+
+---
+
+## Coordenação
+
+**Felipe Gomes de Oliveira**
+(UFAM) — [felipeoliveira@ufam.edu.br](mailto:felipeoliveira@ufam.edu.br)
+
+**Rainer Xavier de Amorim**
+(UFAM) — [raineramorim@ufam.edu.br](mailto:raineramorim@ufam.edu.br)
+
+---
+
+## Desenvolvedores
+
+**Gregory Gabriel Ozaki Coelho**
+(UFAM) — [gregory.coelho@ufam.edu.br](mailto:gregory.coelho@ufam.edu.br)
+
+**Brayner Santana Brito**
+(UFAM) — [brayner.brito@ufam.edu.br](mailto:brayner.brito@ufam.edu.br)
+
+---
+
+## Endereço
+
+Instituto de Ciências Exatas e Tecnologia
+Universidade Federal do Amazonas
+Rua Nossa Senhora do Rosário, 3863
+CEP 69.103-128
+Itacoatiara - AM
+
+---
+
+## Convenções do projeto
+
+- Manter nomes de arquivos em letras minúsculas sempre que possível.
+- Evitar espaços em novos nomes de arquivos.
+- Manter imagens dentro de `assets/img`.
+- Manter estilos apenas em `css/styles.css`.
+- Manter scripts apenas em `js/script.js`.
+- Não inserir CSS ou JavaScript diretamente no HTML, exceto em casos simples como a página `404.html`.
+- Não usar links `href="#"` para logos sem página oficial; usar `span` nesses casos.
+- Manter o tema padrão como `light`.
+
+---
+
+## Desenvolvimento
+
+Para iniciar o servidor local:
+
+```bash
+npm run dev
+```
+
+Para acessar no navegador:
+
+```txt
+http://localhost:5173
+```
+
+Para parar o servidor:
+
+```bash
+Ctrl + C
+```
+
+---
+
+## Status
+
+Projeto em desenvolvimento para a edição 2026 do CONNECT Tech.
+
+Últimas melhorias aplicadas:
+
+- padronização visual dos temas;
+- atualização do rodapé institucional;
+- painel de acessibilidade;
+- carrosséis de imagens na programação;
+- carrossel da organização;
+- modal das trilhas;
+- página de edições anteriores;
+- página 404 personalizada;
+- limpeza de código duplicado e ajustes de responsividade.
+
+---
+
+## Licença
+
+Projeto desenvolvido para fins institucionais e acadêmicos do CONNECT Tech 2026 — ICET/UFAM.
