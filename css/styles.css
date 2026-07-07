@@ -1201,31 +1201,55 @@ html[data-theme="light"] .track-card:focus-visible {
 }
 
 .track-icon {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 26px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: #071121;
-  font-size: 2.15rem;
-  box-shadow: 0 20px 38px rgba(7, 12, 38, 0.14);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--primary) 18%, transparent);
+  color: var(--primary);
+  font-size: 2rem;
+  box-shadow: none;
   transition:
     transform 260ms ease,
     background 260ms ease,
-    color 260ms ease,
-    box-shadow 260ms ease;
+    color 260ms ease;
+}
+
+.track-icon i {
+  display: block;
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: 1;
+}
+
+html[data-theme="light"] .track-icon {
+  background: color-mix(in srgb, var(--primary) 18%, white);
+  color: #028ba2;
+}
+
+html[data-theme="dark"] .track-icon,
+html[data-theme="aurora"] .track-icon {
+  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  color: var(--primary);
 }
 
 .track-card:hover .track-icon,
 .track-card:focus-visible .track-icon {
   transform: translateY(-6px) scale(1.08);
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.16);
   color: #ffffff;
-  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(6px);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body.high-contrast .track-icon {
+  border: 1px solid #ffffff;
+  background: #000000;
+  color: #00ffff;
 }
 
 .track-number {
@@ -1233,7 +1257,8 @@ html[data-theme="light"] .track-card:focus-visible {
   margin-bottom: 18px;
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.94rem;
+  font-size: 1.85rem;
+  line-height: 1;
   font-weight: 800;
 }
 
@@ -1342,7 +1367,8 @@ html[data-theme="light"] .track-card:focus-visible {
   align-items: center;
   gap: 36px 46px;
 }
-.org-logo-grid a {
+.org-logo-grid a,
+.org-logo-grid span {
   min-height: 120px;
   display: inline-flex;
   align-items: center;
@@ -1351,7 +1377,9 @@ html[data-theme="light"] .track-card:focus-visible {
     transform 260ms ease,
     filter 260ms ease;
 }
-.org-logo-grid a:hover {
+
+.org-logo-grid a:hover,
+.org-logo-grid span:hover {
   transform: translateY(-6px) scale(1.04);
   filter: saturate(1.08);
 }
@@ -1364,7 +1392,6 @@ html[data-theme="light"] .track-card:focus-visible {
   max-width: 220px;
   max-height: 150px;
 }
-.parceiro-grid img,
 .patrocinador-grid img {
   max-width: 380px;
   max-height: 190px;
@@ -1373,7 +1400,8 @@ html[data-theme="light"] .track-card:focus-visible {
 .patrocinador-grid {
   align-items: center;
 }
-.patrocinador-grid a {
+.patrocinador-grid a,
+.patrocinador-grid span {
   min-height: 180px;
 }
 .devsociety-logo {
@@ -2110,9 +2138,10 @@ body.reduce-motion .reveal-group > * {
     font-size: 1.8rem;
   }
   .track-icon {
-    width: 66px;
-    height: 66px;
-    font-size: 1.85rem;
+    width: 62px;
+    height: 62px;
+    border-radius: 16px;
+    font-size: 1.8rem;
   }
   .about-section {
     padding: 70px 0;
@@ -2153,7 +2182,6 @@ body.reduce-motion .reveal-group > * {
   .apoio-grid img {
     max-width: 170px;
   }
-  .parceiro-grid img,
   .patrocinador-grid img {
     max-width: 240px;
   }
@@ -2198,28 +2226,13 @@ body.reduce-motion .reveal-group > * {
   }
 }
 
-/* ===== AJUSTE: números dos cards maiores ===== */
-.track-number,
-.card-number,
-.activity-number {
-  font-size: 1.08rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  display: inline-block;
-  margin-bottom: 18px;
-}
-
-.track-card .track-number {
-  font-size: 1.85rem;
-}
-
 /* =========================
    Ajuste final: cards de anais
    ========================= */
 
 .anais-content .track-card {
   overflow: visible;
+  cursor: default;
 }
 
 .anais-content .track-card .button-row {
@@ -2267,84 +2280,4 @@ body.reduce-motion .reveal-group > * {
 .track-card .track-number {
   font-size: 1.85rem;
   line-height: 1;
-}
-
-/* =========================
-   Padronização dos ícones das trilhas
-   Igual ao estilo da programação
-   ========================= */
-
-.track-icon {
-  width: 68px;
-  height: 68px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 26px;
-  border-radius: 18px;
-  background: color-mix(in srgb, var(--primary) 18%, transparent);
-  color: var(--primary);
-  font-size: 2rem;
-  box-shadow: none;
-  transition:
-    transform 260ms ease,
-    background 260ms ease,
-    color 260ms ease,
-    border-color 260ms ease;
-}
-
-.track-icon i {
-  width: auto;
-  height: auto;
-  margin: 0;
-  display: block;
-  background: transparent;
-  color: inherit;
-  font-size: inherit;
-  line-height: 1;
-}
-
-/* No hover do card, mantém o padrão e adapta ao tema */
-.track-card:hover .track-icon,
-.track-card:focus-visible .track-icon {
-  transform: translateY(-6px) scale(1.08);
-  background: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-/* Tema clean/light */
-html[data-theme="light"] .track-icon {
-  background: color-mix(in srgb, var(--primary) 18%, white);
-  color: #028ba2;
-}
-
-/* Tema dark */
-html[data-theme="dark"] .track-icon {
-  background: color-mix(in srgb, var(--primary) 20%, transparent);
-  color: var(--primary);
-}
-
-/* Tema aurora */
-html[data-theme="aurora"] .track-icon {
-  background: color-mix(in srgb, var(--primary) 18%, transparent);
-  color: var(--primary);
-}
-
-/* Alto contraste */
-body.high-contrast .track-icon {
-  border: 1px solid #ffffff;
-  background: #000000;
-  color: #00ffff;
-}
-
-/* Responsivo */
-@media (max-width: 720px) {
-  .track-icon {
-    width: 62px;
-    height: 62px;
-    border-radius: 16px;
-    font-size: 1.8rem;
-  }
 }

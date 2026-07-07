@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll("[data-theme-logo]").forEach((img) => {
       const fallback =
-        img.dataset.logoFallback || "assets/img/connectech-logo-full.png";
+        img.dataset.logoFallback || "assets/img/logos/logo-light.png";
 
       img.onerror = () => {
         img.onerror = null;
@@ -422,12 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("connectech-high-contrast", active ? "1" : "0");
   });
 
-  const readToggleButton =
-    document.querySelector("[data-read-toggle]") ||
-    document.querySelector("[data-read-page]");
-
-  const oldStopButton = document.querySelector("[data-stop-read]");
-
+  const readToggleButton = document.querySelector("[data-read-toggle]");
   let speechQueue = [];
   let speechIndex = 0;
   let isReading = false;
@@ -645,8 +640,6 @@ document.addEventListener("DOMContentLoaded", () => {
       startReading();
     }
   });
-
-  oldStopButton?.addEventListener("click", stopReading);
 
   window.addEventListener("beforeunload", stopReading);
 });
