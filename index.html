@@ -129,21 +129,21 @@
               científicos.
             </p>
 
-            <div class="hero-info" aria-label="Informações do evento">
-              <span>
-                <i class="bi bi-calendar-event"></i>
-                24 a 27/08/2026
-              </span>
+            <div class="event-meta" aria-label="Informações do evento">
+              <div class="event-meta-item">
+                <span>Data do evento</span>
+                <strong>24 a 27 de agosto de 2026</strong>
+              </div>
 
-              <span>
-                <i class="bi bi-geo-alt"></i>
-                Itacoatiara-AM
-              </span>
+              <div class="event-meta-item">
+                <span>Local</span>
+                <strong>Itacoatiara-AM</strong>
+              </div>
 
-              <span>
-                <i class="bi bi-file-earmark-text"></i>
-                Deadline: 08/07/2026
-              </span>
+              <div class="event-meta-item">
+                <span>Submissões</span>
+                <strong>Hard Deadline: 15/07/2026</strong>
+              </div>
             </div>
 
             <div class="hero-actions">
@@ -550,24 +550,44 @@
         </div>
       </section>
 
-      <section class="section section-dark" id="chamada">
-        <div class="container split-grid call-grid">
-          <div class="text-block reveal">
+      <section class="section call-section" id="chamada">
+        <div class="container call-layout">
+          <div class="call-main reveal">
             <p class="section-label">Call For Papers</p>
             <h2>Chamada para trabalhos</h2>
 
-            <p>
+            <p class="call-lead">
               O CONNECT Tech 2026 recebe submissões relacionadas às áreas de
               Computação, Tecnologia, Engenharia de Software, Sistemas de
               Informação, Inteligência Artificial, inovação e temas correlatos.
             </p>
 
-            <div class="deadline-box">
-              <strong>Deadline para submissão: 08/07/2026</strong>
-              <span>Prazo atualizado após a primeira prorrogação.</span>
+            <div class="deadline-panel" aria-label="Prazos de submissão">
+              <div class="deadline-current">
+                <span>Prazo vigente para submissão</span>
+                <strong>15/07/2026</strong>
+                <small>Hard Deadline após a segunda prorrogação.</small>
+              </div>
+
+              <ol class="deadline-steps">
+                <li class="expired">
+                  <span>Prazo original</span>
+                  <del>30/06/2026</del>
+                </li>
+
+                <li class="expired">
+                  <span>1ª prorrogação</span>
+                  <del>08/07/2026</del>
+                </li>
+
+                <li class="active">
+                  <span>Prazo final</span>
+                  <strong>15/07/2026</strong>
+                </li>
+              </ol>
             </div>
 
-            <ul class="rules-list">
+            <ul class="rules-list call-rules">
               <li>
                 <i class="bi bi-check-circle"></i>
                 Não há limite para quantidade de coautores.
@@ -585,15 +605,20 @@
 
               <li>
                 <i class="bi bi-check-circle"></i>
+                A primeira versão enviada no JEMS3 deverá ser anônima.
+              </li>
+
+              <li>
+                <i class="bi bi-check-circle"></i>
                 Plágio, autoplágio indevido e trabalhos fora do escopo não serão
                 aceitos.
               </li>
             </ul>
 
-            <div class="button-row">
+            <div class="button-row call-actions">
               <a
                 class="btn btn-primary"
-                href="https://jems3.sbc.org.br/?returnUrl=%2Fevents%2F343"
+                href="https://jems3.sbc.org.br/connecttech2026"
                 target="_blank"
                 rel="noopener"
               >
@@ -602,7 +627,7 @@
 
               <a
                 class="btn btn-secondary"
-                href="https://www.sbc.org.br/documentosinstitucionais/#relacoes-profissionais"
+                href="https://www.sbc.org.br/wp-content/uploads/2024/07/modelosparapublicaodeartigos.zip"
                 target="_blank"
                 rel="noopener"
               >
@@ -612,29 +637,45 @@
           </div>
 
           <aside class="topics-panel reveal">
-            <h3>Tópicos de interesse</h3>
+            <div class="topics-header">
+              <p class="section-label">Áreas temáticas</p>
+              <h3>Tópicos de interesse</h3>
 
-            <div class="topics-list">
-              <span>Engenharia de Software</span>
-              <span>Sistemas de Informação</span>
-              <span>Inteligência Artificial</span>
-              <span>IA Generativa</span>
-              <span>Letramento Digital</span>
-              <span>Ética em IA</span>
-              <span>Consumo Sustentável da IA</span>
-              <span>Ciência de Dados</span>
-              <span>Mineração de Dados</span>
-              <span>Banco de Dados</span>
-              <span>Computação em Nuvem</span>
-              <span>Internet das Coisas</span>
-              <span>Interação Humano-Computador</span>
-              <span>UX/UI</span>
-              <span>Educação em Computação</span>
-              <span>Tecnologias Educacionais</span>
-              <span>Inovação Tecnológica</span>
-              <span>Robótica</span>
-              <span>Sustentabilidade Digital</span>
+              <p>
+                As submissões devem estar alinhadas ao tema da edição de 2026:
+                avanço exponencial de tecnologias, letramento digital e consumo
+                sustentável da IA.
+              </p>
             </div>
+
+            <ol class="topics-formal-list">
+              <li>Inteligência Artificial</li>
+              <li>Machine Learning e Deep Learning</li>
+              <li>Visão Computacional</li>
+              <li>Processamento da Linguagem Natural</li>
+              <li>IA Generativa</li>
+              <li>Letramento Digital</li>
+              <li>Inclusão Tecnológica</li>
+              <li>Consumo Sustentável da IA</li>
+              <li>Ética e Responsabilidade em IA</li>
+              <li>Ciência de Dados</li>
+              <li>Mineração de Dados</li>
+              <li>Engenharia de Software</li>
+              <li>Sistemas Inteligentes</li>
+              <li>Sistemas de Informação</li>
+              <li>Transformação Digital</li>
+              <li>Educação em Computação</li>
+              <li>Tecnologias Educacionais</li>
+              <li>Computação em Nuvem</li>
+              <li>Infraestruturas Digitais</li>
+              <li>Internet das Coisas</li>
+              <li>Tecnologias Emergentes</li>
+              <li>Interação Humano-Computador</li>
+              <li>UX/UI e Acessibilidade</li>
+              <li>Robótica</li>
+              <li>Automação</li>
+              <li>Inovação Tecnológica</li>
+            </ol>
           </aside>
         </div>
       </section>
@@ -923,22 +964,10 @@
 
               <div class="faq-answer">
                 <p>
-                  Não. A chamada não define limite máximo de autores ou
-                  coautores por trabalho submetido.
-                </p>
-              </div>
-            </article>
-
-            <article class="faq-item">
-              <button class="faq-question" type="button">
-                Há limite de submissões por autor?
-                <i class="bi bi-plus-lg"></i>
-              </button>
-
-              <div class="faq-answer">
-                <p>
-                  Não. Um mesmo autor ou coautor pode participar de mais de uma
-                  submissão, desde que cada trabalho siga as regras da chamada.
+                  Não há limite máximo de autores ou coautores por trabalho
+                  submetido. Um mesmo autor ou coautor pode participar de mais
+                  de uma submissão, desde que cada trabalho siga as regras da
+                  chamada.
                 </p>
               </div>
             </article>
@@ -965,8 +994,11 @@
 
               <div class="faq-answer">
                 <p>
-                  As submissões devem ser realizadas pela plataforma JEMS3, pelo
-                  link indicado na seção de chamada para trabalhos.
+                  As submissões devem ser realizadas pela plataforma JEMS3, por
+                  meio do link indicado na seção de Chamada para Trabalhos. A
+                  primeira versão enviada deverá ser anônima, sem nomes de
+                  autores, instituições ou qualquer outro conteúdo que permita
+                  identificação.
                 </p>
               </div>
             </article>
@@ -1179,7 +1211,7 @@
       <div class="modal-actions">
         <a
           class="btn btn-primary"
-          href="https://jems3.sbc.org.br/?returnUrl=%2Fevents%2F343"
+          href="https://jems3.sbc.org.br/connecttech2026"
           target="_blank"
           rel="noopener"
         >

@@ -582,29 +582,6 @@ html[data-theme="light"] .kicker {
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
 }
 
-.hero-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 30px 0 34px;
-}
-
-.hero-info span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  font-weight: 800;
-}
-
-.hero-info i {
-  color: var(--accent);
-}
-
 .hero-actions,
 .button-row {
   display: flex;
@@ -1053,25 +1030,6 @@ html[data-theme="light"] .activity-card-controls button {
   align-items: start;
 }
 
-.deadline-box {
-  margin: 26px 0;
-  padding: 24px 26px;
-  border: 1px solid rgba(212, 154, 53, 0.45);
-  border-radius: var(--radius-md);
-  background: rgba(212, 154, 53, 0.12);
-}
-
-.deadline-box strong {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--accent);
-  font-size: 1.22rem;
-}
-
-.deadline-box span {
-  color: rgba(255, 255, 255, 0.88);
-}
-
 .rules-list {
   list-style: none;
   padding: 0;
@@ -1091,35 +1049,6 @@ html[data-theme="light"] .activity-card-controls button {
 .rules-list i {
   margin-top: 2px;
   color: var(--primary);
-}
-
-.topics-panel {
-  padding: 34px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.topics-panel h3 {
-  margin-bottom: 22px;
-  color: #ffffff;
-}
-
-.topics-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 11px;
-}
-
-.topics-list span {
-  padding: 9px 13px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  font-size: 0.95rem;
-  line-height: 1.25;
-  font-weight: 800;
 }
 
 .track-card {
@@ -1282,7 +1211,6 @@ body.high-contrast .track-icon {
   transform: translateX(7px);
 }
 
-/* ========================= Organização e Comitê ========================= */
 .organization-section,
 .committee-section {
   background: #ffffff !important;
@@ -1457,7 +1385,7 @@ body.high-contrast .track-icon {
 .org-dots button.active {
   width: 34px;
   background: #1676dc;
-} /* Comitê científico: somente nomes */
+}
 .committee-layout {
   align-items: start;
 }
@@ -1483,7 +1411,7 @@ body.high-contrast .track-icon {
 }
 .committee-list li::before {
   display: none;
-} /* ========================= FAQ ========================= */
+}
 .faq-list {
   display: grid;
   gap: 12px;
@@ -1507,7 +1435,7 @@ body.high-contrast .track-icon {
   font-size: 1.08rem;
 }
 .faq-question i {
-  color: #000000;
+  color: var(--primary-strong);
   transition: transform var(--transition);
 }
 .faq-item.open .faq-question i {
@@ -1521,7 +1449,7 @@ body.high-contrast .track-icon {
 .faq-answer p {
   color: var(--muted);
   margin-bottom: 20px;
-} /* ========================= Anais ========================= */
+}
 .anais-hero {
   min-height: auto;
   padding-bottom: 110px;
@@ -1566,12 +1494,7 @@ body.high-contrast .track-icon {
 .anais-content .section-heading.left::after {
   margin-left: 0;
   margin-right: auto;
-} /* ========================= Footer ========================= */
-
-/* =========================
-   Footer
-   ========================= */
-
+}
 .footer {
   color: rgba(255, 255, 255, 0.82);
   padding: 76px 0 32px;
@@ -1673,7 +1596,6 @@ body.high-contrast .footer {
   color: rgba(255, 255, 255, 0.72);
   font-size: 0.92rem;
 }
-/* ========================= Modal de trilhas ========================= */
 .track-modal {
   width: min(760px, calc(100% - 32px));
   border: 0;
@@ -1738,7 +1660,7 @@ body.high-contrast .footer {
 }
 .modal-actions {
   margin-top: 26px;
-} /* ========================= Acessibilidade e voltar ao topo ========================= */
+}
 .accessibility-button,
 .back-top {
   position: fixed;
@@ -1874,7 +1796,7 @@ body.high-contrast .footer {
 .switch.active::after {
   left: 18px;
   background: #ffffff;
-} /* ========================= Aumento de fonte ========================= */
+}
 html.font-lg main,
 html.font-lg .site-header,
 html.font-lg .footer,
@@ -1910,7 +1832,7 @@ html.font-xl .accessibility-button,
 html.font-lg .back-top,
 html.font-xl .back-top {
   font-size: 1.55rem !important;
-} /* ========================= Animações ========================= */
+}
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1964,7 +1886,7 @@ body.reduce-motion .reveal-group > * {
     transform: none !important;
     transition: none !important;
   }
-} /* ========================= Responsivo ========================= */
+}
 @media (max-width: 1500px) {
   .about-layout {
     grid-template-columns: minmax(680px, 1.08fr) minmax(520px, 0.92fr);
@@ -2109,9 +2031,7 @@ body.reduce-motion .reveal-group > * {
   .btn {
     width: 100%;
   }
-  .hero-info span {
-    width: 100%;
-  }
+
   .activity-card,
   .track-card {
     min-height: auto;
@@ -2226,10 +2146,6 @@ body.reduce-motion .reveal-group > * {
   }
 }
 
-/* =========================
-   Ajuste final: cards de anais
-   ========================= */
-
 .anais-content .track-card {
   overflow: visible;
   cursor: default;
@@ -2280,4 +2196,1188 @@ body.reduce-motion .reveal-group > * {
 .track-card .track-number {
   font-size: 1.85rem;
   line-height: 1;
+}
+
+/* =========================================================
+   Ajuste final: padronização visual, hero, sobre,
+   Call for Papers, acessibilidade e responsividade
+   ========================================================= */
+
+/* Padroniza os rótulos pequenos das seções */
+.section:not(.section-dark) .section-label,
+.about-content .section-label,
+.call-section .section-label,
+.topics-header .section-label,
+.organization-text .section-label,
+.committee-intro .section-label {
+  color: #028ba2;
+}
+
+/* =========================================================
+   Correção do hero
+   ========================================================= */
+
+.hero {
+  min-height: 100svh;
+  padding: calc(var(--header-h) + 118px) 0 96px;
+}
+
+.hero-grid {
+  align-items: center;
+}
+
+.hero-copy {
+  min-width: 0;
+  max-width: 760px;
+}
+
+.hero h1 {
+  color: #ffffff;
+  font-size: clamp(3.1rem, 7.4vw, 7.2rem);
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+}
+
+.hero h2 {
+  margin-top: 8px;
+  color: #ffffff;
+  font-size: clamp(2.2rem, 4.2vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.hero-logo img {
+  width: min(640px, 100%);
+}
+
+/* Informações do evento no hero */
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px 36px;
+  margin: 30px 0 34px;
+}
+
+.event-meta-item {
+  position: relative;
+  min-width: max-content;
+  padding-left: 16px;
+}
+
+.event-meta-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  bottom: 7px;
+  width: 2px;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+.event-meta-item span {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(255, 255, 255, 0.66);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.event-meta-item strong {
+  display: block;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+/* =========================================================
+   Correção da seção Sobre
+   ========================================================= */
+
+.about-section {
+  padding: 90px 0 108px;
+}
+
+.about-layout {
+  grid-template-columns: minmax(620px, 1.08fr) minmax(500px, 0.92fr);
+  gap: 64px;
+  align-items: center;
+}
+
+.about-media {
+  min-height: 660px;
+}
+
+.amazonas-photo-mosaic {
+  width: min(960px, 100%);
+}
+
+.about-content h2 {
+  font-size: clamp(2.45rem, 3.4vw, 3.75rem);
+}
+
+.about-content p {
+  font-size: 1.06rem;
+}
+
+/* =========================================================
+   Call for Papers padronizada com o restante do site
+   ========================================================= */
+
+.call-section {
+  background: #f4f7fc;
+  color: #10163a;
+  padding: 110px 0;
+}
+
+.call-section::before {
+  display: none;
+}
+
+.call-section .container {
+  width: min(var(--container), calc(100% - clamp(32px, 6vw, 96px)));
+}
+
+.call-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(56px, 6vw, 110px);
+  align-items: start;
+}
+
+.call-main h2,
+.topics-header h3 {
+  max-width: 760px;
+  color: #10163a;
+  font-size: clamp(2.05rem, 4vw, 4.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.call-lead {
+  max-width: 720px;
+  margin: 22px 0 0;
+  color: #4f5d78;
+  font-size: 1.08rem;
+  line-height: 1.72;
+}
+
+/* Prazo */
+.deadline-panel {
+  margin: 36px 0 34px;
+}
+
+.deadline-current {
+  position: relative;
+  display: grid;
+  gap: 7px;
+  padding-left: 20px;
+}
+
+.deadline-current::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  bottom: 5px;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.deadline-current span {
+  color: #61708b;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.deadline-current strong {
+  color: #10163a;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.deadline-current small {
+  color: #5c6980;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.deadline-steps {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.deadline-steps li {
+  min-height: 94px;
+  padding: 16px 18px;
+  border: 1px solid #d8e3f1;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(7, 12, 38, 0.045);
+}
+
+.deadline-steps li span {
+  display: block;
+  margin-bottom: 9px;
+  color: #5f6f8c;
+  font-size: 0.9rem;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.deadline-steps li del {
+  color: #9b6a15;
+  font-size: 1rem;
+  font-weight: 900;
+  text-decoration-line: line-through;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1.5px;
+  text-decoration-skip-ink: none;
+}
+
+.deadline-steps li.active {
+  border-color: rgba(0, 219, 252, 0.52);
+  background: linear-gradient(135deg, #ffffff 0%, #eafaff 100%);
+}
+
+.deadline-steps li.active span {
+  color: #028ba2;
+}
+
+.deadline-steps li.active strong {
+  color: #10163a;
+  font-size: 1rem;
+  font-weight: 950;
+}
+
+/* Regras */
+.call-rules {
+  margin: 0 0 32px;
+  gap: 12px;
+}
+
+.call-rules li {
+  color: #24314f;
+  font-size: 1.02rem;
+  line-height: 1.58;
+  font-weight: 760;
+}
+
+.call-rules i {
+  color: #028ba2;
+}
+
+.call-actions .btn-secondary {
+  background: #ffffff;
+  color: #10163a;
+  border-color: #cfd9e8;
+}
+
+.call-actions .btn-secondary:hover {
+  background: #10163a;
+  color: #ffffff;
+  border-color: #10163a;
+}
+
+/* Tópicos */
+.topics-panel {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.topics-header {
+  max-width: 780px;
+  margin-bottom: 30px;
+}
+
+.topics-header h3 {
+  margin-bottom: 16px;
+}
+
+.topics-header p {
+  max-width: 740px;
+  margin: 0;
+  color: #53617c;
+  font-size: 1.04rem;
+  line-height: 1.68;
+}
+
+.topics-formal-list {
+  counter-reset: topic;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 14px 48px;
+}
+
+.topics-formal-list li {
+  counter-increment: topic;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  align-items: start;
+  color: #202b49;
+  font-size: 1rem;
+  font-weight: 820;
+  line-height: 1.45;
+}
+
+.topics-formal-list li::before {
+  content: counter(topic, decimal-leading-zero);
+  color: #028ba2;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  line-height: 1.95;
+}
+
+/* Mantém a seção clara nos temas Aurora e Dark */
+html[data-theme="dark"] .call-section,
+html[data-theme="aurora"] .call-section {
+  background: #f4f7fc;
+  color: #10163a;
+}
+
+html[data-theme="dark"] .call-section h2,
+html[data-theme="dark"] .topics-header h3,
+html[data-theme="aurora"] .call-section h2,
+html[data-theme="aurora"] .topics-header h3 {
+  color: #10163a;
+}
+
+html[data-theme="dark"] .call-lead,
+html[data-theme="dark"] .topics-header p,
+html[data-theme="aurora"] .call-lead,
+html[data-theme="aurora"] .topics-header p {
+  color: #53617c;
+}
+
+/* =========================================================
+   Alto contraste corrigido
+   ========================================================= */
+
+body.high-contrast .section-label,
+body.high-contrast .about-content .section-label,
+body.high-contrast .call-section .section-label,
+body.high-contrast .topics-header .section-label,
+body.high-contrast .organization-text .section-label,
+body.high-contrast .committee-intro .section-label {
+  color: #00ffff !important;
+}
+
+body.high-contrast .section,
+body.high-contrast .section.alt,
+body.high-contrast .about-section,
+body.high-contrast .organization-section,
+body.high-contrast .committee-section,
+body.high-contrast .call-section {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4,
+body.high-contrast p,
+body.high-contrast li,
+body.high-contrast span,
+body.high-contrast strong,
+body.high-contrast small,
+body.high-contrast .about-content h2,
+body.high-contrast .about-content p,
+body.high-contrast .organization-text h2,
+body.high-contrast .organization-text p,
+body.high-contrast .committee-intro h2,
+body.high-contrast .committee-intro p,
+body.high-contrast .committee-list li,
+body.high-contrast .call-lead,
+body.high-contrast .topics-header h3,
+body.high-contrast .topics-header p,
+body.high-contrast .topics-formal-list li,
+body.high-contrast .call-rules li,
+body.high-contrast .deadline-current strong,
+body.high-contrast .deadline-current small,
+body.high-contrast .deadline-steps li span,
+body.high-contrast .deadline-steps li.active strong {
+  color: #ffffff !important;
+}
+
+body.high-contrast .event-meta-item::before,
+body.high-contrast .deadline-current::before {
+  background: #ffff00;
+}
+
+body.high-contrast .event-meta-item span,
+body.high-contrast .deadline-current span,
+body.high-contrast .topics-formal-list li::before,
+body.high-contrast .call-rules i,
+body.high-contrast .deadline-steps li.active span {
+  color: #00ffff !important;
+}
+
+body.high-contrast .deadline-steps li,
+body.high-contrast .deadline-steps li.active,
+body.high-contrast .activity-card,
+body.high-contrast .track-card,
+body.high-contrast .topics-panel {
+  background: #000000 !important;
+  border: 1px solid #ffffff !important;
+  box-shadow: none !important;
+}
+
+body.high-contrast .deadline-steps li del {
+  color: #ffff00 !important;
+  text-decoration-color: #ffff00;
+}
+
+body.high-contrast .btn-primary,
+body.high-contrast .call-actions .btn-primary {
+  background: #00ffff !important;
+  color: #000000 !important;
+  border-color: #00ffff !important;
+}
+
+body.high-contrast .btn-secondary,
+body.high-contrast .call-actions .btn-secondary {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+body.high-contrast .btn-secondary:hover,
+body.high-contrast .call-actions .btn-secondary:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* =========================================================
+   Responsividade geral melhorada
+   ========================================================= */
+
+@media (max-width: 1180px) {
+  .hero {
+    padding-top: calc(var(--header-h) + 72px);
+  }
+
+  .hero-grid,
+  .call-layout {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+
+  .hero-logo {
+    order: -1;
+  }
+
+  .hero-logo img {
+    max-width: 440px;
+  }
+
+  .call-section .container {
+    width: min(100% - 48px, 1040px);
+  }
+
+  .topics-formal-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .activity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tracks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .about-media {
+    min-height: auto;
+  }
+
+  .amazonas-photo-mosaic {
+    width: min(860px, 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 15px;
+  }
+
+  .container,
+  .narrow,
+  .call-section .container {
+    width: min(100% - 24px, var(--container));
+  }
+
+  .section,
+  .call-section,
+  .about-section,
+  .organization-section,
+  .committee-section {
+    padding: 62px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 36px;
+  }
+
+  .section-heading p {
+    font-size: 0.96rem;
+    line-height: 1.58;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 11vw, 3.4rem);
+    line-height: 1.03;
+  }
+
+  h2,
+  .call-main h2,
+  .topics-header h3,
+  .about-content h2,
+  .organization-text h2,
+  .committee-intro h2 {
+    font-size: clamp(1.85rem, 8.5vw, 2.55rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  h3 {
+    font-size: 1.22rem;
+  }
+
+  p,
+  li,
+  .call-lead,
+  .topics-header p,
+  .about-content p,
+  .organization-text p,
+  .committee-intro p,
+  .committee-list li {
+    font-size: 0.95rem;
+    line-height: 1.58;
+  }
+
+  .kicker,
+  .section-label,
+  .deadline-current span {
+    font-size: 0.66rem;
+    letter-spacing: 0.13em;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 104px 0 62px;
+  }
+
+  .hero-grid {
+    gap: 28px;
+  }
+
+  .hero-logo img {
+    max-width: 250px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.55rem, 13vw, 3.85rem);
+  }
+
+  .hero h2 {
+    font-size: clamp(1.85rem, 9vw, 2.7rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.05rem, 5vw, 1.35rem);
+  }
+
+  .theme-line {
+    margin-top: 18px;
+    font-size: 1rem;
+    line-height: 1.42;
+  }
+
+  .hero-text {
+    font-size: 0.95rem;
+    line-height: 1.58;
+  }
+
+  .event-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 24px 0 28px;
+  }
+
+  .event-meta-item {
+    min-width: 0;
+  }
+
+  .event-meta-item strong {
+    font-size: 0.96rem;
+  }
+
+  .call-layout {
+    gap: 42px;
+  }
+
+  .deadline-panel {
+    margin: 28px 0;
+  }
+
+  .deadline-current {
+    padding-left: 16px;
+  }
+
+  .deadline-current strong {
+    font-size: clamp(2rem, 11vw, 2.65rem);
+  }
+
+  .deadline-current small {
+    font-size: 0.92rem;
+  }
+
+  .deadline-steps {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .deadline-steps li {
+    min-height: auto;
+    padding: 14px 16px;
+  }
+
+  .deadline-steps li span {
+    margin-bottom: 6px;
+    font-size: 0.88rem;
+  }
+
+  .deadline-steps li del,
+  .deadline-steps li.active strong {
+    font-size: 0.96rem;
+  }
+
+  .call-rules {
+    gap: 10px;
+  }
+
+  .call-rules li {
+    font-size: 0.93rem;
+    line-height: 1.48;
+  }
+
+  .topics-header {
+    margin-bottom: 22px;
+  }
+
+  .topics-formal-list {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .topics-formal-list li {
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+    font-size: 0.93rem;
+    line-height: 1.42;
+  }
+
+  .hero-actions,
+  .button-row,
+  .call-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    min-height: 46px;
+    padding-inline: 18px;
+    font-size: 0.94rem;
+  }
+
+  .activity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .activity-card,
+  .track-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .activity-card-media {
+    padding: 0;
+  }
+
+  .activity-card-body {
+    padding: 18px;
+  }
+
+  .activity-card h3,
+  .activity-card-body h3,
+  .track-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .activity-card p,
+  .activity-card-body p,
+  .track-card p {
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .track-icon,
+  .activity-card-body i,
+  .activity-card i {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 14px;
+    border-radius: 13px;
+    font-size: 1.32rem;
+  }
+
+  .amazonas-photo-mosaic {
+    width: 100%;
+    max-width: 520px;
+    min-height: 250px;
+  }
+
+  .organization-carousel {
+    min-height: 420px;
+  }
+
+  .org-logo-grid {
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .org-logo-grid img {
+    max-width: 132px;
+    max-height: 82px;
+  }
+
+  .apoio-grid img {
+    max-width: 150px;
+  }
+
+  .patrocinador-grid img {
+    max-width: 220px;
+  }
+
+  .devsociety-logo {
+    max-width: 190px !important;
+  }
+
+  .bemol-logo {
+    max-width: 250px !important;
+  }
+
+  .footer {
+    padding: 56px 0 28px;
+  }
+
+  .footer img {
+    height: 135px;
+  }
+
+  .footer-grid {
+    gap: 32px;
+  }
+
+  .footer p,
+  .footer a,
+  .footer address {
+    font-size: 0.92rem;
+  }
+
+  .accessibility-button {
+    right: 14px;
+    top: auto;
+    bottom: 88px;
+    width: 46px;
+    height: 46px;
+    font-size: 1.25rem;
+    transform: none;
+  }
+
+  .accessibility-button:hover {
+    transform: scale(1.04);
+  }
+
+  .accessibility-panel {
+    left: 12px;
+    right: 12px;
+    top: auto;
+    bottom: 144px;
+    width: auto;
+    max-height: calc(100vh - 170px);
+    overflow-y: auto;
+    transform: none;
+  }
+
+  .back-top {
+    right: 14px;
+    bottom: 24px;
+    width: 46px;
+    height: 46px;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-card h3,
+  .activity-card-body h3,
+  .track-card h3 {
+    font-size: 1.12rem;
+  }
+
+  .activity-card p,
+  .activity-card-body p,
+  .track-card p {
+    font-size: 0.92rem;
+  }
+}
+
+/* =========================================================
+   Correção final: contraste, anais, navbar responsiva,
+   cards, footer e acessibilidade
+   ========================================================= */
+
+/* 1) Navbar: vira menu hambúrguer mais cedo */
+@media (max-width: 1360px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .menu-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-inner {
+    gap: 18px;
+  }
+
+  .brand img {
+    height: 52px;
+  }
+}
+
+@media (max-width: 860px) {
+  .registration-button:not(.mobile) {
+    display: none !important;
+  }
+
+  .brand img {
+    height: 42px;
+  }
+}
+
+/* 2) Corrige o hero dos anais para não ficar gigante */
+.anais-hero {
+  min-height: auto !important;
+  padding: calc(var(--header-h) + 92px) 0 96px !important;
+}
+
+.anais-hero h1 {
+  max-width: 980px;
+  font-size: clamp(3rem, 6vw, 6rem);
+}
+
+.anais-hero-content {
+  max-width: 1180px;
+}
+
+/* 3) Alto contraste: painel de acessibilidade legível */
+body.high-contrast .accessibility-panel {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: none !important;
+}
+
+body.high-contrast .accessibility-panel,
+body.high-contrast .accessibility-panel * {
+  color: #ffffff !important;
+}
+
+body.high-contrast .accessibility-panel h3 {
+  color: #ffffff !important;
+}
+
+body.high-contrast .accessibility-row button {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+}
+
+body.high-contrast .accessibility-row button:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+body.high-contrast .accessibility-hint {
+  background: #111111 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+}
+
+body.high-contrast .switch.active {
+  background: #00ffff !important;
+}
+
+body.high-contrast .switch::after {
+  background: #ffffff !important;
+}
+
+body.high-contrast .switch.active::after {
+  background: #000000 !important;
+}
+
+/* 4) Alto contraste: remove caixa/linha em volta dos tópicos */
+body.high-contrast .topics-panel {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.high-contrast .topics-formal-list,
+body.high-contrast .topics-formal-list li {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 5) Botão de acessibilidade não cobre o painel */
+.accessibility-panel {
+  z-index: 130 !important;
+}
+
+.accessibility-button {
+  z-index: 120 !important;
+}
+
+@media (max-width: 720px) {
+  .accessibility-button {
+    right: 14px !important;
+    bottom: 82px !important;
+    top: auto !important;
+    transform: none !important;
+  }
+
+  .accessibility-panel {
+    left: 12px !important;
+    right: 12px !important;
+    top: auto !important;
+    bottom: 142px !important;
+    width: auto !important;
+    max-height: calc(100vh - 170px) !important;
+    overflow-y: auto !important;
+    transform: none !important;
+  }
+
+  .back-top {
+    right: 14px !important;
+    bottom: 22px !important;
+  }
+}
+
+/* 6) Programação e trilhas: mantém 3 colunas em telas médias */
+@media (min-width: 901px) and (max-width: 1360px) {
+  .activity-grid,
+  .tracks-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
+
+  .activity-card,
+  .track-card {
+    padding: 26px !important;
+  }
+
+  .activity-card-body {
+    padding: 24px !important;
+  }
+
+  .activity-card h3,
+  .activity-card-body h3,
+  .track-card h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .activity-card p,
+  .activity-card-body p,
+  .track-card p {
+    font-size: 0.94rem !important;
+    line-height: 1.55 !important;
+  }
+}
+
+/* 7) Tablet estreito: duas colunas só quando realmente precisa */
+@media (min-width: 641px) and (max-width: 900px) {
+  .activity-grid,
+  .tracks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+  }
+
+  .activity-card,
+  .track-card {
+    padding: 22px !important;
+  }
+
+  .activity-card-media {
+    padding: 0 !important;
+  }
+
+  .activity-card-body {
+    padding: 20px !important;
+  }
+}
+
+/* 8) Celular pequeno: uma coluna para não esmagar conteúdo */
+@media (max-width: 640px) {
+  .activity-grid,
+  .tracks-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .activity-card,
+  .track-card {
+    padding: 22px !important;
+  }
+
+  .activity-card-media {
+    padding: 0 !important;
+  }
+
+  .activity-card-body {
+    padding: 22px !important;
+  }
+}
+
+/* 9) Footer mobile/tablet mais organizado em duas colunas */
+@media (max-width: 720px) {
+  .footer {
+    padding: 52px 0 26px !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px 22px !important;
+    text-align: center;
+    align-items: start;
+  }
+
+  .footer-about {
+    grid-column: 1 / -1;
+  }
+
+  .footer img {
+    height: 112px !important;
+    margin-inline: auto;
+    margin-bottom: 14px;
+  }
+
+  .footer h3 {
+    margin-bottom: 12px;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.12em;
+  }
+
+  .footer p,
+  .footer a,
+  .footer address {
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .footer-bottom {
+    margin-top: 34px;
+    padding-top: 18px;
+    text-align: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* 10) Celular muito estreito: mantém footer em 2 colunas, mas menor */
+@media (max-width: 430px) {
+  .footer-grid {
+    gap: 24px 16px !important;
+  }
+
+  .footer img {
+    height: 96px !important;
+  }
+
+  .footer p,
+  .footer a,
+  .footer address {
+    font-size: 0.78rem !important;
+  }
+}
+
+/* 11) Ajuste fino do alto contraste nos cards */
+body.high-contrast .activity-card,
+body.high-contrast .track-card {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+}
+
+body.high-contrast .activity-card h3,
+body.high-contrast .activity-card p,
+body.high-contrast .activity-card-body h3,
+body.high-contrast .activity-card-body p,
+body.high-contrast .track-card h3,
+body.high-contrast .track-card p {
+  color: #ffffff !important;
+}
+
+body.high-contrast .activity-card i,
+body.high-contrast .activity-card-body i,
+body.high-contrast .track-icon {
+  background: #000000 !important;
+  color: #00ffff !important;
+  border: 1px solid #00ffff !important;
 }
