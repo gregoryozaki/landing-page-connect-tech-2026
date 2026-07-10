@@ -233,80 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (clickedOutside) modal.close();
   });
 
-  const orgCarousel = document.querySelector("[data-org-carousel]");
-  const orgSlides = [...document.querySelectorAll("[data-org-slide]")];
-  const orgDots = [...document.querySelectorAll("[data-org-dot]")];
-  const orgPrev = document.querySelector("[data-org-prev]");
-  const orgNext = document.querySelector("[data-org-next]");
-
-  let orgIndex = 0;
-  let orgTimer = null;
-
-  function showOrgSlide(nextIndex, direction = "next") {
-    if (!orgSlides.length) return;
-
-    const previousIndex = orgIndex;
-    orgIndex = (nextIndex + orgSlides.length) % orgSlides.length;
-
-    orgSlides.forEach((slide, index) => {
-      slide.classList.remove("active", "leaving-left", "leaving-right");
-
-      if (index === orgIndex) {
-        slide.classList.add("active");
-      } else if (index === previousIndex) {
-        slide.classList.add(
-          direction === "next" ? "leaving-left" : "leaving-right",
-        );
-      }
-    });
-
-    orgDots.forEach((dot, index) => {
-      dot.classList.toggle("active", index === orgIndex);
-      dot.setAttribute("aria-current", index === orgIndex ? "true" : "false");
-    });
-  }
-
-  function nextOrgSlide() {
-    showOrgSlide(orgIndex + 1, "next");
-  }
-
-  function prevOrgSlide() {
-    showOrgSlide(orgIndex - 1, "prev");
-  }
-
-  function startOrgCarousel() {
-    clearInterval(orgTimer);
-
-    if (orgSlides.length > 1 && !body.classList.contains("reduce-motion")) {
-      orgTimer = setInterval(nextOrgSlide, 4300);
-    }
-  }
-
-  if (orgSlides.length) {
-    showOrgSlide(0);
-    startOrgCarousel();
-
-    orgNext?.addEventListener("click", () => {
-      nextOrgSlide();
-      startOrgCarousel();
-    });
-
-    orgPrev?.addEventListener("click", () => {
-      prevOrgSlide();
-      startOrgCarousel();
-    });
-
-    orgDots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        showOrgSlide(index, index > orgIndex ? "next" : "prev");
-        startOrgCarousel();
-      });
-    });
-
-    orgCarousel?.addEventListener("mouseenter", () => clearInterval(orgTimer));
-    orgCarousel?.addEventListener("mouseleave", startOrgCarousel);
-  }
-
   const mediaCards = [...document.querySelectorAll("[data-card-carousel]")];
 
   mediaCards.forEach((card) => {
@@ -372,9 +298,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const a11yButton = document.querySelector("[data-a11y-button]");
   const a11yPanel = document.querySelector("[data-a11y-panel]");
 
+  function closeAccessibilityPanel() {
+    a11yPanel?.classList.remove("open");
+    body.classList.remove("a11y-open");
+    a11yButton?.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleAccessibilityPanel() {
+    const isOpen = a11yPanel?.classList.toggle("open");
+
+    body.classList.toggle("a11y-open", Boolean(isOpen));
+    a11yButton?.setAttribute("aria-expanded", String(Boolean(isOpen)));
+  }
+
+  a11yButton?.setAttribute("aria-expanded", "false");
+
   a11yButton?.addEventListener("click", (event) => {
     event.stopPropagation();
-    a11yPanel?.classList.toggle("open");
+    toggleAccessibilityPanel();
+  });
+
+  a11yPanel?.addEventListener("click", (event) => {
+    event.stopPropagation();
   });
 
   document.addEventListener("click", (event) => {
@@ -382,7 +327,13 @@ document.addEventListener("DOMContentLoaded", () => {
       !a11yPanel?.contains(event.target) &&
       !a11yButton?.contains(event.target)
     ) {
-      a11yPanel?.classList.remove("open");
+      closeAccessibilityPanel();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeAccessibilityPanel();
     }
   });
 
@@ -427,7 +378,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let speechIndex = 0;
   let isReading = false;
   let selectedVoice = null;
-  let keepSpeechAliveTimer = null;
+
+  const isMobileSpeech =
+    window.matchMedia("(max-width: 720px)").matches ||
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   function setReadButtonState(reading) {
     isReading = reading;
@@ -441,52 +395,58 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function waitForVoices() {
-    return new Promise((resolve) => {
-      const voices = window.speechSynthesis.getVoices();
-
-      if (voices.length) {
-        resolve(voices);
-        return;
-      }
-
-      let resolved = false;
-
-      window.speechSynthesis.onvoiceschanged = () => {
-        if (resolved) return;
-
-        resolved = true;
-        resolve(window.speechSynthesis.getVoices());
-      };
-
-      setTimeout(() => {
-        if (resolved) return;
-
-        resolved = true;
-        resolve(window.speechSynthesis.getVoices());
-      }, 1500);
-    });
+  function setReadButtonLoading() {
+    if (readToggleButton) {
+      readToggleButton.textContent = "Carregando...";
+      readToggleButton.setAttribute(
+        "aria-label",
+        "Carregando leitura da página",
+      );
+    }
   }
 
-  async function getBestVoice() {
-    const voices = await waitForVoices();
-
-    selectedVoice =
+  function pickBestVoice(voices) {
+    return (
       voices.find((voice) => voice.lang === "pt-BR") ||
       voices.find((voice) => voice.lang?.toLowerCase().startsWith("pt")) ||
       voices.find((voice) => voice.lang?.toLowerCase().includes("br")) ||
       voices[0] ||
-      null;
-
-    return selectedVoice;
+      null
+    );
   }
 
-  function splitText(text, maxLength = 650) {
+  function waitForVoices(timeout = 2500) {
+    return new Promise((resolve) => {
+      if (!("speechSynthesis" in window)) {
+        resolve([]);
+        return;
+      }
+
+      const currentVoices = window.speechSynthesis.getVoices();
+
+      if (currentVoices.length) {
+        resolve(currentVoices);
+        return;
+      }
+
+      let finished = false;
+
+      const finish = () => {
+        if (finished) return;
+
+        finished = true;
+        resolve(window.speechSynthesis.getVoices());
+      };
+
+      window.speechSynthesis.onvoiceschanged = finish;
+      setTimeout(finish, timeout);
+    });
+  }
+
+  function splitText(text, maxLength = isMobileSpeech ? 220 : 380) {
     const cleanText = text.replace(/\s+/g, " ").trim();
 
-    if (!cleanText) {
-      return [];
-    }
+    if (!cleanText) return [];
 
     const sentences = cleanText.match(/[^.!?]+[.!?]+|\S[^.!?]*$/g) || [
       cleanText,
@@ -506,9 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    if (current) {
-      chunks.push(current);
-    }
+    if (current) chunks.push(current);
 
     return chunks;
   }
@@ -516,9 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function getReadableText() {
     const main = document.querySelector("main");
 
-    if (!main) {
-      return document.body.innerText || "";
-    }
+    if (!main) return document.body.innerText || "";
 
     const clone = main.cloneNode(true);
 
@@ -543,27 +499,11 @@ document.addEventListener("DOMContentLoaded", () => {
     speechQueue = [];
     speechIndex = 0;
 
-    clearInterval(keepSpeechAliveTimer);
-    keepSpeechAliveTimer = null;
-
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
 
     setReadButtonState(false);
-  }
-
-  function keepSpeechAlive() {
-    clearInterval(keepSpeechAliveTimer);
-
-    keepSpeechAliveTimer = setInterval(() => {
-      if (!isReading || !window.speechSynthesis.speaking) {
-        return;
-      }
-
-      window.speechSynthesis.pause();
-      window.speechSynthesis.resume();
-    }, 9000);
   }
 
   function speakNextChunk() {
@@ -572,10 +512,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    if (!("speechSynthesis" in window)) {
+      stopReading();
+      return;
+    }
+
     const utterance = new SpeechSynthesisUtterance(speechQueue[speechIndex]);
 
     utterance.lang = selectedVoice?.lang || "pt-BR";
-    utterance.rate = 0.9;
+    utterance.rate = isMobileSpeech ? 0.84 : 0.88;
     utterance.pitch = 1;
     utterance.volume = 1;
 
@@ -586,22 +531,29 @@ document.addEventListener("DOMContentLoaded", () => {
     utterance.onend = () => {
       speechIndex += 1;
 
-      setTimeout(() => {
-        speakNextChunk();
-      }, 120);
+      setTimeout(
+        () => {
+          speakNextChunk();
+        },
+        isMobileSpeech ? 260 : 160,
+      );
     };
 
     utterance.onerror = (event) => {
       console.warn("Erro na leitura:", event.error);
 
+      if (!isReading) return;
+
       speechIndex += 1;
 
-      setTimeout(() => {
-        speakNextChunk();
-      }, 120);
+      setTimeout(
+        () => {
+          speakNextChunk();
+        },
+        isMobileSpeech ? 300 : 180,
+      );
     };
 
-    window.speechSynthesis.resume();
     window.speechSynthesis.speak(utterance);
   }
 
@@ -611,7 +563,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    stopReading();
+    window.speechSynthesis.cancel();
+    setReadButtonLoading();
+
+    const voices = await waitForVoices();
+    selectedVoice = pickBestVoice(voices);
 
     const text = getReadableText();
 
@@ -620,17 +576,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!speechQueue.length) {
       alert("Não encontrei texto para leitura nesta página.");
+      setReadButtonState(false);
       return;
     }
 
-    await getBestVoice();
-
     setReadButtonState(true);
-    keepSpeechAlive();
 
     setTimeout(() => {
       speakNextChunk();
-    }, 180);
+    }, 120);
   }
 
   readToggleButton?.addEventListener("click", () => {

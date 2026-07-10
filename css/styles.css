@@ -2197,25 +2197,29 @@ body.reduce-motion .reveal-group > * {
   font-size: 1.85rem;
   line-height: 1;
 }
-
 /* =========================================================
-   Ajuste final: padronização visual, hero, sobre,
-   Call for Papers, acessibilidade e responsividade
+   AJUSTES FINAIS CONSOLIDADOS
+   Padronização, Call for Papers, Organização, Contraste e Mobile
    ========================================================= */
 
-/* Padroniza os rótulos pequenos das seções */
+/* =========================
+   Rótulos das seções
+   ========================= */
+
 .section:not(.section-dark) .section-label,
 .about-content .section-label,
 .call-section .section-label,
 .topics-header .section-label,
-.organization-text .section-label,
+.organization-static .section-label,
+.organization-section .section-label,
+.sponsors-heading .section-label,
 .committee-intro .section-label {
-  color: #028ba2;
+  color: #028ba2 !important;
 }
 
-/* =========================================================
-   Correção do hero
-   ========================================================= */
+/* =========================
+   Hero
+   ========================= */
 
 .hero {
   min-height: 100svh;
@@ -2250,7 +2254,6 @@ body.reduce-motion .reveal-group > * {
   width: min(640px, 100%);
 }
 
-/* Informações do evento no hero */
 .event-meta {
   display: flex;
   flex-wrap: wrap;
@@ -2295,9 +2298,9 @@ body.reduce-motion .reveal-group > * {
   line-height: 1.35;
 }
 
-/* =========================================================
-   Correção da seção Sobre
-   ========================================================= */
+/* =========================
+   Sobre
+   ========================= */
 
 .about-section {
   padding: 90px 0 108px;
@@ -2325,9 +2328,9 @@ body.reduce-motion .reveal-group > * {
   font-size: 1.06rem;
 }
 
-/* =========================================================
-   Call for Papers padronizada com o restante do site
-   ========================================================= */
+/* =========================
+   Call for Papers
+   ========================= */
 
 .call-section {
   background: #f4f7fc;
@@ -2367,7 +2370,6 @@ body.reduce-motion .reveal-group > * {
   line-height: 1.72;
 }
 
-/* Prazo */
 .deadline-panel {
   margin: 36px 0 34px;
 }
@@ -2467,7 +2469,6 @@ body.reduce-motion .reveal-group > * {
   font-weight: 950;
 }
 
-/* Regras */
 .call-rules {
   margin: 0 0 32px;
   gap: 12px;
@@ -2496,7 +2497,10 @@ body.reduce-motion .reveal-group > * {
   border-color: #10163a;
 }
 
-/* Tópicos */
+/* =========================
+   Tópicos
+   ========================= */
+
 .topics-panel {
   padding: 0;
   border: 0;
@@ -2553,7 +2557,6 @@ body.reduce-motion .reveal-group > * {
   line-height: 1.95;
 }
 
-/* Mantém a seção clara nos temas Aurora e Dark */
 html[data-theme="dark"] .call-section,
 html[data-theme="aurora"] .call-section {
   background: #f4f7fc;
@@ -2574,15 +2577,307 @@ html[data-theme="aurora"] .topics-header p {
   color: #53617c;
 }
 
-/* =========================================================
-   Alto contraste corrigido
-   ========================================================= */
+/* =========================
+   Organização e patrocinadores
+   ========================= */
+
+.organization-section {
+  background: #ffffff !important;
+  color: #4e5568;
+  padding: 110px 0 120px;
+  overflow: hidden;
+}
+
+.organization-section::before {
+  display: none;
+}
+
+.organization-static .section-heading {
+  max-width: 980px;
+  margin-bottom: 58px;
+}
+
+.organization-static .section-heading h2,
+.organization-static h2,
+.identity-card h3,
+.sponsors-heading h3,
+.sponsor-tier h4 {
+  color: #10163a;
+}
+
+.organization-static .section-heading p:not(.section-label),
+.organization-static p,
+.sponsors-heading p:not(.section-label) {
+  color: #565d6d;
+}
+
+.identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-bottom: 76px;
+}
+
+.identity-card {
+  border: 1px solid #d9e4f2;
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(0, 219, 252, 0.08),
+      transparent 32%
+    ),
+    #ffffff;
+  padding: 34px;
+  box-shadow: 0 18px 42px rgba(7, 12, 38, 0.055);
+}
+
+.identity-card-head {
+  margin-bottom: 30px;
+}
+
+.identity-card-head span {
+  display: block;
+  margin-bottom: 8px;
+  color: #028ba2;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.identity-card-head h3 {
+  font-size: clamp(1.6rem, 2.4vw, 2.35rem);
+}
+
+.identity-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 28px 36px;
+}
+
+.identity-logo {
+  min-width: 132px;
+  min-height: 96px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  border-radius: 18px;
+  background: #ffffff;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.identity-logo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(7, 12, 38, 0.08);
+}
+
+.identity-logo img {
+  max-width: 150px;
+  max-height: 90px;
+  object-fit: contain;
+}
+
+.support-logos .identity-logo img {
+  max-width: 170px;
+  max-height: 95px;
+}
+
+.sponsors-area {
+  margin-top: 18px;
+}
+
+.sponsors-heading {
+  max-width: 860px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.sponsors-heading h3 {
+  font-size: clamp(2.05rem, 4vw, 4.1rem);
+  letter-spacing: -0.04em;
+}
+
+.sponsor-board {
+  display: grid;
+  gap: 22px;
+}
+
+.sponsor-tier {
+  display: grid !important;
+  grid-template-columns: minmax(260px, 0.36fr) minmax(420px, 0.64fr) !important;
+  align-items: center !important;
+  gap: 40px !important;
+  min-height: 172px;
+  padding: 28px 42px !important;
+  text-align: left !important;
+  border: 1px solid #d9e4f2;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 42px rgba(7, 12, 38, 0.055);
+}
+
+.sponsor-tier-head {
+  min-width: 0;
+  text-align: left !important;
+}
+
+.sponsor-level {
+  display: inline-flex;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.sponsor-tier h4 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.1vw, 2rem);
+  line-height: 1.12;
+}
+
+.sponsor-logos {
+  width: 100%;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 24px;
+  padding-right: clamp(36px, 8vw, 150px);
+}
+
+.sponsor-logo,
+.sponsor-tier-gold .sponsor-logo,
+.sponsor-logo-gold,
+.sponsor-logo-bronze {
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.sponsor-logo img,
+.sponsor-logo-gold img,
+.sponsor-logo-bronze img {
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.sponsor-tier-gold {
+  min-height: 176px;
+  border-color: rgba(214, 143, 44, 0.5);
+  background:
+    radial-gradient(
+      circle at 78% 22%,
+      rgba(214, 143, 44, 0.16),
+      transparent 34%
+    ),
+    linear-gradient(135deg, #fffdf7 0%, #ffffff 58%, #fff4d8 100%);
+}
+
+.sponsor-tier-gold .sponsor-level {
+  color: #9b6412;
+}
+
+.sponsor-tier-gold .sponsor-logo img,
+.sponsor-logo-gold img {
+  max-width: 330px !important;
+  max-height: 135px !important;
+}
+
+.sponsor-tier-silver,
+.sponsor-tier-empty {
+  grid-template-columns: 1fr !important;
+  min-height: 118px !important;
+  padding: 24px 42px !important;
+  text-align: left !important;
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.sponsor-tier-silver .sponsor-tier-head,
+.sponsor-tier-empty .sponsor-tier-head {
+  text-align: left !important;
+}
+
+.sponsor-tier-silver .sponsor-logos,
+.sponsor-tier-empty .sponsor-logos,
+.sponsor-logo-placeholder {
+  display: none !important;
+}
+
+.sponsor-tier-silver .sponsor-level {
+  color: #64748b;
+}
+
+.sponsor-tier-bronze {
+  min-height: 176px;
+  border-color: rgba(160, 93, 43, 0.38);
+  background:
+    radial-gradient(circle at 78% 22%, rgba(160, 93, 43, 0.1), transparent 34%),
+    #ffffff;
+}
+
+.sponsor-tier-bronze .sponsor-level {
+  color: #8a4d20;
+}
+
+.sponsor-tier-bronze .sponsor-logo img,
+.sponsor-logo-bronze img {
+  max-width: 310px !important;
+  max-height: 125px !important;
+}
+
+.organization-carousel,
+.org-controls,
+.org-dots {
+  display: none !important;
+}
+
+/* =========================
+   Anais
+   ========================= */
+
+.anais-hero {
+  min-height: auto !important;
+  padding: calc(var(--header-h) + 92px) 0 96px !important;
+}
+
+.anais-hero h1 {
+  max-width: 980px;
+  font-size: clamp(3rem, 6vw, 6rem);
+}
+
+.anais-hero-content {
+  max-width: 1180px;
+}
+
+/* =========================
+   Alto contraste
+   ========================= */
 
 body.high-contrast .section-label,
 body.high-contrast .about-content .section-label,
 body.high-contrast .call-section .section-label,
 body.high-contrast .topics-header .section-label,
-body.high-contrast .organization-text .section-label,
+body.high-contrast .organization-section .section-label,
+body.high-contrast .identity-card-head span,
+body.high-contrast .sponsor-level,
 body.high-contrast .committee-intro .section-label {
   color: #00ffff !important;
 }
@@ -2606,35 +2901,23 @@ body.high-contrast li,
 body.high-contrast span,
 body.high-contrast strong,
 body.high-contrast small,
-body.high-contrast .about-content h2,
-body.high-contrast .about-content p,
-body.high-contrast .organization-text h2,
-body.high-contrast .organization-text p,
-body.high-contrast .committee-intro h2,
-body.high-contrast .committee-intro p,
-body.high-contrast .committee-list li,
-body.high-contrast .call-lead,
-body.high-contrast .topics-header h3,
-body.high-contrast .topics-header p,
 body.high-contrast .topics-formal-list li,
 body.high-contrast .call-rules li,
-body.high-contrast .deadline-current strong,
-body.high-contrast .deadline-current small,
-body.high-contrast .deadline-steps li span,
-body.high-contrast .deadline-steps li.active strong {
+body.high-contrast .committee-list li {
   color: #ffffff !important;
 }
 
-body.high-contrast .event-meta-item::before,
-body.high-contrast .deadline-current::before {
-  background: #ffff00;
+body.high-contrast .topics-formal-list,
+body.high-contrast .topics-formal-list li,
+body.high-contrast .topics-panel {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
-body.high-contrast .event-meta-item span,
-body.high-contrast .deadline-current span,
 body.high-contrast .topics-formal-list li::before,
-body.high-contrast .call-rules i,
-body.high-contrast .deadline-steps li.active span {
+body.high-contrast .call-rules i {
   color: #00ffff !important;
 }
 
@@ -2642,8 +2925,10 @@ body.high-contrast .deadline-steps li,
 body.high-contrast .deadline-steps li.active,
 body.high-contrast .activity-card,
 body.high-contrast .track-card,
-body.high-contrast .topics-panel {
+body.high-contrast .identity-card,
+body.high-contrast .sponsor-tier {
   background: #000000 !important;
+  color: #ffffff !important;
   border: 1px solid #ffffff !important;
   box-shadow: none !important;
 }
@@ -2673,457 +2958,7 @@ body.high-contrast .call-actions .btn-secondary:hover {
   color: #000000 !important;
 }
 
-/* =========================================================
-   Responsividade geral melhorada
-   ========================================================= */
-
-@media (max-width: 1180px) {
-  .hero {
-    padding-top: calc(var(--header-h) + 72px);
-  }
-
-  .hero-grid,
-  .call-layout {
-    grid-template-columns: 1fr;
-    gap: 46px;
-  }
-
-  .hero-logo {
-    order: -1;
-  }
-
-  .hero-logo img {
-    max-width: 440px;
-  }
-
-  .call-section .container {
-    width: min(100% - 48px, 1040px);
-  }
-
-  .topics-formal-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .activity-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .tracks-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-layout {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-
-  .about-media {
-    min-height: auto;
-  }
-
-  .amazonas-photo-mosaic {
-    width: min(860px, 100%);
-  }
-}
-
-@media (max-width: 720px) {
-  html {
-    font-size: 15px;
-  }
-
-  .container,
-  .narrow,
-  .call-section .container {
-    width: min(100% - 24px, var(--container));
-  }
-
-  .section,
-  .call-section,
-  .about-section,
-  .organization-section,
-  .committee-section {
-    padding: 62px 0;
-  }
-
-  .section-heading {
-    margin-bottom: 36px;
-  }
-
-  .section-heading p {
-    font-size: 0.96rem;
-    line-height: 1.58;
-  }
-
-  h1 {
-    font-size: clamp(2.25rem, 11vw, 3.4rem);
-    line-height: 1.03;
-  }
-
-  h2,
-  .call-main h2,
-  .topics-header h3,
-  .about-content h2,
-  .organization-text h2,
-  .committee-intro h2 {
-    font-size: clamp(1.85rem, 8.5vw, 2.55rem);
-    line-height: 1.08;
-    letter-spacing: -0.04em;
-  }
-
-  h3 {
-    font-size: 1.22rem;
-  }
-
-  p,
-  li,
-  .call-lead,
-  .topics-header p,
-  .about-content p,
-  .organization-text p,
-  .committee-intro p,
-  .committee-list li {
-    font-size: 0.95rem;
-    line-height: 1.58;
-  }
-
-  .kicker,
-  .section-label,
-  .deadline-current span {
-    font-size: 0.66rem;
-    letter-spacing: 0.13em;
-  }
-
-  .hero {
-    min-height: auto;
-    padding: 104px 0 62px;
-  }
-
-  .hero-grid {
-    gap: 28px;
-  }
-
-  .hero-logo img {
-    max-width: 250px;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.55rem, 13vw, 3.85rem);
-  }
-
-  .hero h2 {
-    font-size: clamp(1.85rem, 9vw, 2.7rem);
-  }
-
-  .hero-subtitle {
-    font-size: clamp(1.05rem, 5vw, 1.35rem);
-  }
-
-  .theme-line {
-    margin-top: 18px;
-    font-size: 1rem;
-    line-height: 1.42;
-  }
-
-  .hero-text {
-    font-size: 0.95rem;
-    line-height: 1.58;
-  }
-
-  .event-meta {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin: 24px 0 28px;
-  }
-
-  .event-meta-item {
-    min-width: 0;
-  }
-
-  .event-meta-item strong {
-    font-size: 0.96rem;
-  }
-
-  .call-layout {
-    gap: 42px;
-  }
-
-  .deadline-panel {
-    margin: 28px 0;
-  }
-
-  .deadline-current {
-    padding-left: 16px;
-  }
-
-  .deadline-current strong {
-    font-size: clamp(2rem, 11vw, 2.65rem);
-  }
-
-  .deadline-current small {
-    font-size: 0.92rem;
-  }
-
-  .deadline-steps {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .deadline-steps li {
-    min-height: auto;
-    padding: 14px 16px;
-  }
-
-  .deadline-steps li span {
-    margin-bottom: 6px;
-    font-size: 0.88rem;
-  }
-
-  .deadline-steps li del,
-  .deadline-steps li.active strong {
-    font-size: 0.96rem;
-  }
-
-  .call-rules {
-    gap: 10px;
-  }
-
-  .call-rules li {
-    font-size: 0.93rem;
-    line-height: 1.48;
-  }
-
-  .topics-header {
-    margin-bottom: 22px;
-  }
-
-  .topics-formal-list {
-    grid-template-columns: 1fr;
-    gap: 11px;
-  }
-
-  .topics-formal-list li {
-    grid-template-columns: 32px 1fr;
-    gap: 10px;
-    font-size: 0.93rem;
-    line-height: 1.42;
-  }
-
-  .hero-actions,
-  .button-row,
-  .call-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn {
-    width: 100%;
-    min-height: 46px;
-    padding-inline: 18px;
-    font-size: 0.94rem;
-  }
-
-  .activity-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .activity-card,
-  .track-card {
-    min-height: auto;
-    padding: 20px;
-  }
-
-  .activity-card-media {
-    padding: 0;
-  }
-
-  .activity-card-body {
-    padding: 18px;
-  }
-
-  .activity-card h3,
-  .activity-card-body h3,
-  .track-card h3 {
-    font-size: 1.05rem;
-  }
-
-  .activity-card p,
-  .activity-card-body p,
-  .track-card p {
-    font-size: 0.86rem;
-    line-height: 1.45;
-  }
-
-  .track-icon,
-  .activity-card-body i,
-  .activity-card i {
-    width: 46px;
-    height: 46px;
-    margin-bottom: 14px;
-    border-radius: 13px;
-    font-size: 1.32rem;
-  }
-
-  .amazonas-photo-mosaic {
-    width: 100%;
-    max-width: 520px;
-    min-height: 250px;
-  }
-
-  .organization-carousel {
-    min-height: 420px;
-  }
-
-  .org-logo-grid {
-    justify-content: center;
-    gap: 22px;
-  }
-
-  .org-logo-grid img {
-    max-width: 132px;
-    max-height: 82px;
-  }
-
-  .apoio-grid img {
-    max-width: 150px;
-  }
-
-  .patrocinador-grid img {
-    max-width: 220px;
-  }
-
-  .devsociety-logo {
-    max-width: 190px !important;
-  }
-
-  .bemol-logo {
-    max-width: 250px !important;
-  }
-
-  .footer {
-    padding: 56px 0 28px;
-  }
-
-  .footer img {
-    height: 135px;
-  }
-
-  .footer-grid {
-    gap: 32px;
-  }
-
-  .footer p,
-  .footer a,
-  .footer address {
-    font-size: 0.92rem;
-  }
-
-  .accessibility-button {
-    right: 14px;
-    top: auto;
-    bottom: 88px;
-    width: 46px;
-    height: 46px;
-    font-size: 1.25rem;
-    transform: none;
-  }
-
-  .accessibility-button:hover {
-    transform: scale(1.04);
-  }
-
-  .accessibility-panel {
-    left: 12px;
-    right: 12px;
-    top: auto;
-    bottom: 144px;
-    width: auto;
-    max-height: calc(100vh - 170px);
-    overflow-y: auto;
-    transform: none;
-  }
-
-  .back-top {
-    right: 14px;
-    bottom: 24px;
-    width: 46px;
-    height: 46px;
-    font-size: 1.15rem;
-  }
-}
-
-@media (max-width: 520px) {
-  .activity-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .activity-card h3,
-  .activity-card-body h3,
-  .track-card h3 {
-    font-size: 1.12rem;
-  }
-
-  .activity-card p,
-  .activity-card-body p,
-  .track-card p {
-    font-size: 0.92rem;
-  }
-}
-
-/* =========================================================
-   Correção final: contraste, anais, navbar responsiva,
-   cards, footer e acessibilidade
-   ========================================================= */
-
-/* 1) Navbar: vira menu hambúrguer mais cedo */
-@media (max-width: 1360px) {
-  .desktop-nav {
-    display: none !important;
-  }
-
-  .menu-button {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .header-inner {
-    gap: 18px;
-  }
-
-  .brand img {
-    height: 52px;
-  }
-}
-
-@media (max-width: 860px) {
-  .registration-button:not(.mobile) {
-    display: none !important;
-  }
-
-  .brand img {
-    height: 42px;
-  }
-}
-
-/* 2) Corrige o hero dos anais para não ficar gigante */
-.anais-hero {
-  min-height: auto !important;
-  padding: calc(var(--header-h) + 92px) 0 96px !important;
-}
-
-.anais-hero h1 {
-  max-width: 980px;
-  font-size: clamp(3rem, 6vw, 6rem);
-}
-
-.anais-hero-content {
-  max-width: 1180px;
-}
-
-/* 3) Alto contraste: painel de acessibilidade legível */
+/* Painel de acessibilidade no contraste */
 body.high-contrast .accessibility-panel {
   background: #000000 !important;
   color: #ffffff !important;
@@ -3133,10 +2968,6 @@ body.high-contrast .accessibility-panel {
 
 body.high-contrast .accessibility-panel,
 body.high-contrast .accessibility-panel * {
-  color: #ffffff !important;
-}
-
-body.high-contrast .accessibility-panel h3 {
   color: #ffffff !important;
 }
 
@@ -3169,141 +3000,528 @@ body.high-contrast .switch.active::after {
   background: #000000 !important;
 }
 
-/* 4) Alto contraste: remove caixa/linha em volta dos tópicos */
-body.high-contrast .topics-panel {
-  border: 0 !important;
-  outline: 0 !important;
-  background: transparent !important;
+/* Logos em caixas brancas no contraste */
+body.high-contrast .organization-section .identity-logo,
+body.high-contrast .organization-section .identity-logos > a,
+body.high-contrast .organization-section .identity-logos > span {
+  width: 150px !important;
+  min-width: 150px !important;
+  height: 104px !important;
+  min-height: 104px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 14px 18px !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
   box-shadow: none !important;
 }
 
-body.high-contrast .topics-formal-list,
-body.high-contrast .topics-formal-list li {
-  border: 0 !important;
-  outline: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
+body.high-contrast .organization-section .identity-logo img,
+body.high-contrast .organization-section .identity-logos > a img,
+body.high-contrast .organization-section .identity-logos > span img {
+  max-width: 118px !important;
+  max-height: 68px !important;
+  opacity: 1 !important;
+  filter: none !important;
+  object-fit: contain !important;
 }
 
-/* 5) Botão de acessibilidade não cobre o painel */
-.accessibility-panel {
-  z-index: 130 !important;
+body.high-contrast .organization-section .support-logos > a,
+body.high-contrast .organization-section .support-logos > span {
+  width: 166px !important;
+  min-width: 166px !important;
 }
 
-.accessibility-button {
-  z-index: 120 !important;
+body.high-contrast .organization-section img[alt*="LOGAR"],
+body.high-contrast .organization-section img[src*="logar"],
+body.high-contrast .organization-section .devsociety-logo {
+  max-width: 138px !important;
+  max-height: 62px !important;
 }
 
-@media (max-width: 720px) {
-  .accessibility-button {
-    right: 14px !important;
-    bottom: 82px !important;
-    top: auto !important;
-    transform: none !important;
+body.high-contrast .sponsor-tier-gold .sponsor-logo,
+body.high-contrast .sponsor-tier-bronze .sponsor-logo,
+body.high-contrast .sponsor-logo-gold,
+body.high-contrast .sponsor-logo-bronze {
+  width: 248px !important;
+  height: 128px !important;
+  min-width: 248px !important;
+  min-height: 128px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 14px 18px !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+}
+
+body.high-contrast .sponsor-tier-gold .sponsor-logo img,
+body.high-contrast .sponsor-tier-bronze .sponsor-logo img,
+body.high-contrast .sponsor-logo-gold img,
+body.high-contrast .sponsor-logo-bronze img {
+  max-width: 172px !important;
+  max-height: 70px !important;
+  opacity: 1 !important;
+  filter: none !important;
+  object-fit: contain !important;
+}
+
+/* =========================
+   Navbar responsiva
+   ========================= */
+
+@media (max-width: 1360px) {
+  .desktop-nav {
+    display: none !important;
   }
 
-  .accessibility-panel {
-    left: 12px !important;
-    right: 12px !important;
-    top: auto !important;
-    bottom: 142px !important;
-    width: auto !important;
-    max-height: calc(100vh - 170px) !important;
-    overflow-y: auto !important;
-    transform: none !important;
+  .menu-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
   }
 
-  .back-top {
-    right: 14px !important;
-    bottom: 22px !important;
+  .header-inner {
+    gap: 18px;
+  }
+
+  .brand img {
+    height: 52px;
   }
 }
 
-/* 6) Programação e trilhas: mantém 3 colunas em telas médias */
-@media (min-width: 901px) and (max-width: 1360px) {
+@media (max-width: 860px) {
+  .registration-button:not(.mobile) {
+    display: none !important;
+  }
+
+  .brand img {
+    height: 42px;
+  }
+}
+
+/* =========================
+   Tablet
+   ========================= */
+
+@media (max-width: 1180px) {
+  .hero {
+    padding-top: calc(var(--header-h) + 72px);
+  }
+
+  .hero-grid,
+  .call-layout {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+
+  .hero-logo {
+    order: -1;
+  }
+
+  .hero-logo img {
+    max-width: 440px;
+  }
+
+  .call-section .container {
+    width: min(100% - 48px, 1040px);
+  }
+
+  .topics-formal-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .activity-grid,
   .tracks-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 20px !important;
   }
 
+  .identity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsor-tier {
+    grid-template-columns: minmax(220px, 0.42fr) minmax(260px, 0.58fr) !important;
+    gap: 28px !important;
+    padding: 26px 30px !important;
+  }
+
+  .sponsor-logos {
+    padding-right: 0;
+  }
+}
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 720px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container,
+  .narrow,
+  .call-section .container {
+    width: min(100% - 32px, var(--container));
+  }
+
+  .section,
+  .call-section,
+  .about-section,
+  .organization-section,
+  .committee-section {
+    padding: 56px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 32px;
+  }
+
+  .section-heading p {
+    font-size: 0.9rem;
+    line-height: 1.52;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 10vw, 3.15rem);
+    line-height: 1.03;
+  }
+
+  h2,
+  .call-main h2,
+  .topics-header h3,
+  .about-content h2,
+  .organization-text h2,
+  .committee-intro h2 {
+    font-size: clamp(1.65rem, 7.6vw, 2.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  h3 {
+    font-size: 1.08rem;
+  }
+
+  p,
+  li,
+  .call-lead,
+  .topics-header p,
+  .about-content p,
+  .organization-text p,
+  .committee-intro p,
+  .committee-list li {
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+
+  .kicker,
+  .section-label,
+  .deadline-current span {
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 102px 0 54px;
+  }
+
+  .hero-grid {
+    gap: 24px;
+  }
+
+  .hero-logo img {
+    max-width: 245px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.35rem, 11.5vw, 3.35rem);
+  }
+
+  .hero h2 {
+    font-size: clamp(1.65rem, 8vw, 2.35rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 4.6vw, 1.22rem);
+  }
+
+  .theme-line {
+    margin-top: 16px;
+    font-size: 0.94rem;
+    line-height: 1.38;
+  }
+
+  .hero-text {
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+
+  .event-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 22px 0 24px;
+  }
+
+  .event-meta-item {
+    min-width: 0;
+  }
+
+  .event-meta-item strong {
+    font-size: 0.88rem;
+  }
+
+  .hero-actions,
+  .button-row,
+  .call-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    min-height: 44px;
+    padding-inline: 16px;
+    font-size: 0.88rem;
+  }
+
+  .deadline-panel {
+    margin: 26px 0;
+  }
+
+  .deadline-current {
+    padding-left: 15px;
+  }
+
+  .deadline-current strong {
+    font-size: clamp(1.8rem, 9vw, 2.35rem);
+  }
+
+  .deadline-current small {
+    font-size: 0.84rem;
+  }
+
+  .deadline-steps {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .deadline-steps li {
+    min-height: auto;
+    padding: 13px 15px;
+  }
+
+  .deadline-steps li span {
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+  }
+
+  .deadline-steps li del,
+  .deadline-steps li.active strong {
+    font-size: 0.88rem;
+  }
+
+  .call-rules {
+    gap: 9px;
+  }
+
+  .call-rules li {
+    font-size: 0.84rem;
+    line-height: 1.44;
+  }
+
+  .topics-header {
+    margin-bottom: 20px;
+  }
+
+  .topics-formal-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px 14px;
+  }
+
+  .topics-formal-list li {
+    grid-template-columns: 24px 1fr;
+    gap: 7px;
+    font-size: 0.72rem;
+    line-height: 1.32;
+  }
+
+  .topics-formal-list li::before {
+    font-size: 0.58rem;
+    line-height: 1.7;
+  }
+
+  .activity-grid,
+  .tracks-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
   .activity-card,
   .track-card {
-    padding: 26px !important;
+    min-height: auto;
+    padding: 10px !important;
+    border-radius: 16px;
+  }
+
+  .activity-card-media {
+    padding: 0 !important;
+  }
+
+  .activity-card-gallery {
+    border-radius: 16px 16px 0 0;
   }
 
   .activity-card-body {
-    padding: 24px !important;
+    padding: 10px !important;
   }
 
   .activity-card h3,
   .activity-card-body h3,
   .track-card h3 {
-    font-size: 1.2rem !important;
+    margin-bottom: 6px;
+    font-size: 0.76rem !important;
+    line-height: 1.18;
   }
 
   .activity-card p,
   .activity-card-body p,
   .track-card p {
-    font-size: 0.94rem !important;
-    line-height: 1.55 !important;
-  }
-}
-
-/* 7) Tablet estreito: duas colunas só quando realmente precisa */
-@media (min-width: 641px) and (max-width: 900px) {
-  .activity-grid,
-  .tracks-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 18px !important;
+    font-size: 0.66rem !important;
+    line-height: 1.35 !important;
   }
 
-  .activity-card,
-  .track-card {
-    padding: 22px !important;
+  .track-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
-  .activity-card-media {
-    padding: 0 !important;
+  .track-card button {
+    margin-top: 8px;
+    font-size: 0.68rem;
   }
 
-  .activity-card-body {
-    padding: 20px !important;
+  .track-icon,
+  .activity-card-body i,
+  .activity-card i {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    font-size: 0.95rem;
   }
-}
 
-/* 8) Celular pequeno: uma coluna para não esmagar conteúdo */
-@media (max-width: 640px) {
-  .activity-grid,
-  .tracks-grid {
+  .track-number {
+    margin-bottom: 7px;
+    font-size: 1rem !important;
+  }
+
+  .activity-card-controls {
+    opacity: 1;
+    pointer-events: auto;
+    padding-inline: 7px;
+  }
+
+  .activity-card-controls button {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+  .activity-card-controls button::before {
+    font-size: 1.28rem;
+  }
+
+  .amazonas-photo-mosaic {
+    width: 100%;
+    max-width: 520px;
+    min-height: 250px;
+  }
+
+  .identity-grid {
+    gap: 18px;
+    margin-bottom: 50px;
+  }
+
+  .identity-card,
+  .sponsor-tier {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .identity-logos {
+    gap: 16px;
+  }
+
+  .identity-logo {
+    min-width: 104px;
+    min-height: 74px;
+    padding: 10px;
+  }
+
+  .identity-logo img {
+    max-width: 110px;
+    max-height: 68px;
+  }
+
+  .support-logos .identity-logo img {
+    max-width: 120px;
+    max-height: 72px;
+  }
+
+  .sponsor-tier {
     grid-template-columns: 1fr !important;
     gap: 18px !important;
-  }
-
-  .activity-card,
-  .track-card {
+    min-height: auto !important;
     padding: 22px !important;
+    text-align: left !important;
   }
 
-  .activity-card-media {
-    padding: 0 !important;
+  .sponsor-tier-head,
+  .sponsor-tier-silver .sponsor-tier-head,
+  .sponsor-tier-empty .sponsor-tier-head {
+    text-align: left !important;
   }
 
-  .activity-card-body {
-    padding: 22px !important;
+  .sponsor-logos {
+    justify-content: flex-start !important;
+    padding-right: 0;
   }
-}
 
-/* 9) Footer mobile/tablet mais organizado em duas colunas */
-@media (max-width: 720px) {
+  .sponsor-tier h4 {
+    font-size: clamp(1.15rem, 6vw, 1.55rem);
+  }
+
+  .sponsor-tier-gold .sponsor-logo img,
+  .sponsor-logo-gold img {
+    max-width: 220px !important;
+    max-height: 92px !important;
+  }
+
+  .sponsor-tier-bronze .sponsor-logo img,
+  .sponsor-logo-bronze img {
+    max-width: 210px !important;
+    max-height: 86px !important;
+  }
+
   .footer {
-    padding: 52px 0 26px !important;
+    padding: 48px 0 26px !important;
   }
 
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 28px 22px !important;
-    text-align: center;
+    text-align: left !important;
     align-items: start;
   }
 
@@ -3312,72 +3530,916 @@ body.high-contrast .topics-formal-list li {
   }
 
   .footer img {
-    height: 112px !important;
-    margin-inline: auto;
+    height: 104px !important;
+    margin-inline: 0;
     margin-bottom: 14px;
   }
 
   .footer h3 {
     margin-bottom: 12px;
-    font-size: 0.72rem !important;
+    font-size: 0.68rem !important;
     letter-spacing: 0.12em;
   }
 
   .footer p,
   .footer a,
   .footer address {
-    font-size: 0.82rem !important;
-    line-height: 1.55 !important;
+    font-size: 0.76rem !important;
+    line-height: 1.5 !important;
   }
 
   .footer-bottom {
-    margin-top: 34px;
+    margin-top: 30px;
     padding-top: 18px;
-    text-align: center;
-    align-items: center;
+    text-align: left !important;
+    align-items: flex-start;
     gap: 8px;
-    font-size: 0.8rem !important;
+    font-size: 0.76rem !important;
+  }
+
+  .accessibility-button {
+    right: 14px !important;
+    top: auto !important;
+    bottom: 82px !important;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    transform: none !important;
+  }
+
+  .accessibility-button:hover {
+    transform: scale(1.04) !important;
+  }
+
+  .accessibility-panel {
+    left: 12px !important;
+    right: 12px !important;
+    top: auto !important;
+    bottom: 138px !important;
+    width: auto !important;
+    max-height: calc(100vh - 165px) !important;
+    overflow-y: auto !important;
+    transform: none !important;
+    z-index: 130 !important;
+  }
+
+  .back-top {
+    right: 14px !important;
+    bottom: 22px !important;
+    width: 44px;
+    height: 44px;
+    font-size: 1.08rem;
   }
 }
 
-/* 10) Celular muito estreito: mantém footer em 2 colunas, mas menor */
-@media (max-width: 430px) {
-  .footer-grid {
-    gap: 24px 16px !important;
+/* =========================
+   Mobile muito estreito
+   ========================= */
+
+@media (max-width: 390px) {
+  .container,
+  .narrow,
+  .call-section .container {
+    width: min(100% - 26px, var(--container));
   }
 
-  .footer img {
-    height: 96px !important;
+  .topics-formal-list li {
+    font-size: 0.68rem;
+  }
+
+  .activity-grid,
+  .tracks-grid {
+    gap: 8px !important;
+  }
+
+  .activity-card,
+  .track-card {
+    padding: 9px !important;
+  }
+
+  .activity-card-body {
+    padding: 9px !important;
+  }
+
+  .activity-card h3,
+  .activity-card-body h3,
+  .track-card h3 {
+    font-size: 0.7rem !important;
+  }
+
+  .activity-card p,
+  .activity-card-body p,
+  .track-card p {
+    font-size: 0.62rem !important;
+  }
+
+  .footer-grid {
+    gap: 24px 16px !important;
   }
 
   .footer p,
   .footer a,
   .footer address {
-    font-size: 0.78rem !important;
+    font-size: 0.72rem !important;
   }
 }
 
-/* 11) Ajuste fino do alto contraste nos cards */
-body.high-contrast .activity-card,
-body.high-contrast .track-card {
+/* =========================================================
+   Ajuste fino mobile: organização de conteúdo e fontes
+   ========================================================= */
+
+@media (max-width: 720px) {
+  /* Fonte geral mobile mais uniforme */
+  html {
+    font-size: 14px;
+  }
+
+  p,
+  li,
+  a,
+  span,
+  button,
+  .about-content p,
+  .call-lead,
+  .topics-header p,
+  .committee-intro p,
+  .committee-list li,
+  .faq-question {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 10vw, 3.1rem) !important;
+  }
+
+  h2,
+  .call-main h2,
+  .topics-header h3,
+  .about-content h2,
+  .committee-intro h2,
+  .sponsors-heading h3 {
+    font-size: clamp(1.55rem, 7.2vw, 2.15rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  h3 {
+    font-size: 1rem !important;
+  }
+
+  .section-label,
+  .kicker {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  /* Hero: data/local/submissões lado a lado */
+  .event-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    margin: 20px 0 22px !important;
+  }
+
+  .event-meta-item {
+    min-width: 0 !important;
+    padding-left: 8px !important;
+  }
+
+  .event-meta-item::before {
+    width: 2px !important;
+    top: 4px !important;
+    bottom: 4px !important;
+  }
+
+  .event-meta-item span {
+    margin-bottom: 3px !important;
+    font-size: 0.48rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .event-meta-item strong {
+    font-size: 0.65rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Hero: botões lado a lado */
+  .hero-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions .btn {
+    width: 100% !important;
+    min-height: 42px !important;
+    padding-inline: 10px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Sobre: texto aparece antes do mapa no mobile */
+  .about-layout {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .about-content {
+    order: -1 !important;
+    max-width: 100% !important;
+  }
+
+  .about-media {
+    order: 0 !important;
+    min-height: auto !important;
+  }
+
+  .amazonas-photo-mosaic {
+    width: 100% !important;
+    max-width: 440px !important;
+    min-height: 230px !important;
+    margin-inline: auto !important;
+  }
+
+  /* Call: prazos lado a lado */
+  .deadline-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .deadline-steps li {
+    padding: 10px 8px !important;
+    border-radius: 13px !important;
+  }
+
+  .deadline-steps li span {
+    font-size: 0.58rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .deadline-steps li del,
+  .deadline-steps li.active strong {
+    font-size: 0.68rem !important;
+  }
+
+  .deadline-current strong {
+    font-size: clamp(1.65rem, 8vw, 2.25rem) !important;
+  }
+
+  .deadline-current small {
+    font-size: 0.78rem !important;
+  }
+
+  /* Call: regras em duas colunas */
+  .call-rules {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px 12px !important;
+  }
+
+  .call-rules li {
+    gap: 6px !important;
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .call-rules i {
+    font-size: 0.72rem !important;
+  }
+
+  /* Call: botões lado a lado */
+  .call-actions,
+  .button-row.call-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .call-actions .btn {
+    width: 100% !important;
+    min-height: 42px !important;
+    padding-inline: 10px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Tópicos: mantém duas colunas, mas mais compacto */
+  .topics-formal-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px 12px !important;
+  }
+
+  .topics-formal-list li {
+    grid-template-columns: 22px 1fr !important;
+    gap: 6px !important;
+    font-size: 0.68rem !important;
+    line-height: 1.28 !important;
+  }
+
+  .topics-formal-list li::before {
+    font-size: 0.54rem !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Organização: realização e apoio lado a lado */
+  .identity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    margin-bottom: 42px !important;
+  }
+
+  .identity-card {
+    padding: 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .identity-card-head {
+    margin-bottom: 16px !important;
+  }
+
+  .identity-card-head span {
+    font-size: 0.52rem !important;
+    letter-spacing: 0.13em !important;
+  }
+
+  .identity-card-head h3 {
+    font-size: 0.98rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .identity-logos {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    justify-items: center !important;
+  }
+
+  .identity-logo {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 66px !important;
+    padding: 8px !important;
+    border-radius: 14px !important;
+  }
+
+  .identity-logo img {
+    max-width: 78px !important;
+    max-height: 50px !important;
+  }
+
+  .support-logos .identity-logo img {
+    max-width: 86px !important;
+    max-height: 52px !important;
+  }
+
+  .support-logos .identity-logo:last-child {
+    grid-column: 1 / -1;
+    width: 70% !important;
+  }
+
+  /* Patrocinadores: mantém como está, apenas reduz fonte */
+  .sponsor-tier h4 {
+    font-size: 1rem !important;
+  }
+
+  .sponsor-level {
+    font-size: 0.55rem !important;
+  }
+
+  /* Comitê em duas colunas */
+  .committee-layout {
+    gap: 30px !important;
+  }
+
+  .committee-list ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px 16px !important;
+  }
+
+  .committee-list li {
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* FAQ em duas colunas */
+  .faq-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .faq-item {
+    border: 1px solid #d9e1ee !important;
+    border-radius: 14px !important;
+    padding: 0 12px !important;
+    background: rgba(255, 255, 255, 0.42) !important;
+  }
+
+  .faq-question {
+    min-height: 66px !important;
+    padding: 12px 0 !important;
+    gap: 10px !important;
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .faq-answer p {
+    font-size: 0.7rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Footer alinhado à esquerda */
+  .footer-grid {
+    text-align: left !important;
+  }
+
+  .footer img {
+    margin-inline: 0 !important;
+  }
+
+  .footer-bottom {
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+}
+
+/* Ajuste para celulares muito estreitos */
+@media (max-width: 390px) {
+  .event-meta {
+    gap: 6px !important;
+  }
+
+  .event-meta-item strong {
+    font-size: 0.6rem !important;
+  }
+
+  .hero-actions .btn,
+  .call-actions .btn {
+    font-size: 0.66rem !important;
+  }
+
+  .identity-grid {
+    gap: 10px !important;
+  }
+
+  .identity-card {
+    padding: 12px !important;
+  }
+
+  .identity-logo {
+    min-height: 60px !important;
+  }
+
+  .identity-logo img {
+    max-width: 70px !important;
+    max-height: 45px !important;
+  }
+
+  .support-logos .identity-logo img {
+    max-width: 78px !important;
+  }
+
+  .committee-list li,
+  .faq-question,
+  .topics-formal-list li,
+  .call-rules li {
+    font-size: 0.64rem !important;
+  }
+}
+/* =========================================================
+   Ajuste final definitivo: acessibilidade mobile e anais
+   ========================================================= */
+
+/* Acessibilidade no mobile sem cobrir o ícone */
+@media (max-width: 720px) {
+  .accessibility-button {
+    right: 14px !important;
+    bottom: 84px !important;
+    top: auto !important;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.08rem !important;
+    transform: none !important;
+    z-index: 170 !important;
+  }
+
+  .accessibility-button:hover {
+    transform: scale(1.04) !important;
+  }
+
+  body.a11y-open .accessibility-button {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .accessibility-panel {
+    left: auto !important;
+    right: 64px !important;
+    top: auto !important;
+    bottom: 76px !important;
+    width: min(340px, calc(100vw - 92px)) !important;
+    max-height: min(46vh, 320px) !important;
+    overflow-y: auto !important;
+    padding: 15px 16px !important;
+    border-radius: 17px !important;
+    transform: none !important;
+    z-index: 165 !important;
+  }
+
+  .accessibility-panel,
+  .accessibility-panel * {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .accessibility-panel h3 {
+    margin: 0 0 12px !important;
+    font-size: 0.96rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .accessibility-row {
+    gap: 10px !important;
+    margin-top: 10px !important;
+  }
+
+  .accessibility-row button {
+    padding: 6px 10px !important;
+    border-radius: 10px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .accessibility-hint {
+    margin-top: 10px !important;
+    padding: 9px 10px !important;
+    font-size: 0.66rem !important;
+    line-height: 1.32 !important;
+  }
+
+  .switch {
+    width: 38px !important;
+    min-width: 38px !important;
+    height: 23px !important;
+  }
+
+  .switch::after {
+    width: 16px !important;
+    height: 16px !important;
+    top: 3px !important;
+    left: 4px !important;
+  }
+
+  .switch.active::after {
+    left: 17px !important;
+  }
+}
+
+/* Celulares muito estreitos */
+@media (max-width: 390px) {
+  .accessibility-button {
+    right: 12px !important;
+    bottom: 82px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .accessibility-panel {
+    right: 58px !important;
+    bottom: 74px !important;
+    width: min(300px, calc(100vw - 82px)) !important;
+    padding: 14px !important;
+  }
+
+  .accessibility-panel,
+  .accessibility-panel * {
+    font-size: 0.74rem !important;
+  }
+
+  .accessibility-panel h3 {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Contraste do painel */
+body.high-contrast .accessibility-panel {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: none !important;
+}
+
+body.high-contrast .accessibility-panel,
+body.high-contrast .accessibility-panel * {
+  color: #ffffff !important;
+}
+
+body.high-contrast .accessibility-row button {
   background: #000000 !important;
   color: #ffffff !important;
   border: 1px solid #ffffff !important;
 }
 
-body.high-contrast .activity-card h3,
-body.high-contrast .activity-card p,
-body.high-contrast .activity-card-body h3,
-body.high-contrast .activity-card-body p,
-body.high-contrast .track-card h3,
-body.high-contrast .track-card p {
-  color: #ffffff !important;
+body.high-contrast .accessibility-row button:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
 }
 
-body.high-contrast .activity-card i,
-body.high-contrast .activity-card-body i,
-body.high-contrast .track-icon {
-  background: #000000 !important;
-  color: #00ffff !important;
-  border: 1px solid #00ffff !important;
+body.high-contrast .accessibility-hint {
+  background: #111111 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
 }
+
+/* Anais seguindo o padrão mobile da página principal */
+@media (max-width: 720px) {
+  .anais-hero {
+    padding: calc(var(--header-h) + 72px) 0 58px !important;
+  }
+
+  .anais-hero h1 {
+    font-size: clamp(2.1rem, 10vw, 3.1rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  .anais-hero-content .theme-line {
+    max-width: 100% !important;
+    font-size: 0.9rem !important;
+    line-height: 1.42 !important;
+  }
+
+  .anais-content {
+    padding: 58px 0 !important;
+  }
+
+  .anais-content .section-heading h2 {
+    font-size: clamp(1.55rem, 7.2vw, 2.15rem) !important;
+  }
+
+  .anais-content .section-heading p {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .anais-content .tracks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .anais-content .track-card {
+    padding: 14px !important;
+    border-radius: 16px !important;
+    min-height: auto !important;
+  }
+
+  .anais-content .track-number {
+    margin-bottom: 8px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .anais-content .track-card h3 {
+    font-size: 0.78rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .anais-content .track-card p {
+    font-size: 0.64rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .anais-content .track-card .button-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    margin-top: 14px !important;
+  }
+
+  .anais-content .track-card .button-row .btn {
+    width: 100% !important;
+    min-height: 36px !important;
+    padding-inline: 8px !important;
+    font-size: 0.58rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .anais-content .track-card .button-row .btn:only-child {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* =========================================================
+   Correção final: responsividade geral, contraste e patrocinadores
+   ========================================================= */
+
+/* Tablet e telas intermediárias: manter botões e cards bem distribuídos */
+@media (min-width: 721px) and (max-width: 1180px) {
+  .hero-actions,
+  .button-row,
+  .call-actions,
+  .button-row.call-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .hero-actions .btn,
+  .button-row .btn,
+  .call-actions .btn {
+    width: auto !important;
+    min-width: 170px;
+  }
+
+  .event-meta {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+
+  .deadline-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .call-rules {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px 18px !important;
+  }
+
+  .activity-grid,
+  .tracks-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .identity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Organização em alto contraste no mobile: impede as caixas brancas de vazarem */
+@media (max-width: 720px) {
+  body.high-contrast .identity-card {
+    overflow: hidden !important;
+  }
+
+  body.high-contrast .identity-logos {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    align-items: center !important;
+    justify-items: center !important;
+  }
+
+  body.high-contrast .organization-section .identity-logo,
+  body.high-contrast .organization-section .identity-logos > a,
+  body.high-contrast .organization-section .identity-logos > span {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 6px !important;
+    border-radius: 12px !important;
+    border: 1px solid #ffffff !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  body.high-contrast .organization-section .identity-logo img,
+  body.high-contrast .organization-section .identity-logos > a img,
+  body.high-contrast .organization-section .identity-logos > span img {
+    max-width: 76px !important;
+    max-height: 42px !important;
+    object-fit: contain !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  body.high-contrast .organization-section .support-logos > a,
+  body.high-contrast .organization-section .support-logos > span {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.high-contrast .organization-section .support-logos .identity-logo:last-child,
+  body.high-contrast .organization-section .support-logos > a:last-child,
+  body.high-contrast .organization-section .support-logos > span:last-child {
+    grid-column: 1 / -1 !important;
+    width: min(72%, 155px) !important;
+    margin-inline: auto !important;
+  }
+
+  body.high-contrast .organization-section img[alt*="LOGAR"],
+  body.high-contrast .organization-section img[src*="logar"],
+  body.high-contrast .organization-section .devsociety-logo {
+    max-width: 96px !important;
+    max-height: 40px !important;
+  }
+}
+
+/* Patrocinadores no mobile: um abaixo do outro, centralizado e mais compacto */
+@media (max-width: 720px) {
+  .sponsors-area {
+    margin-top: 38px !important;
+  }
+
+  .sponsors-heading {
+    margin-bottom: 24px !important;
+  }
+
+  .sponsor-board {
+    width: min(100%, 430px) !important;
+    margin-inline: auto !important;
+    gap: 16px !important;
+  }
+
+  .sponsor-tier,
+  .sponsor-tier-gold,
+  .sponsor-tier-silver,
+  .sponsor-tier-bronze,
+  .sponsor-tier-empty {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    padding: 18px !important;
+    gap: 14px !important;
+    border-radius: 22px !important;
+    text-align: center !important;
+  }
+
+  .sponsor-tier-head,
+  .sponsor-tier-silver .sponsor-tier-head,
+  .sponsor-tier-empty .sponsor-tier-head {
+    text-align: center !important;
+  }
+
+  .sponsor-level {
+    margin-inline: auto !important;
+    margin-bottom: 7px !important;
+    font-size: 0.54rem !important;
+  }
+
+  .sponsor-tier h4 {
+    font-size: 1rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .sponsor-logos {
+    justify-content: center !important;
+    padding-right: 0 !important;
+    gap: 12px !important;
+  }
+
+  .sponsor-tier-gold .sponsor-logo img,
+  .sponsor-logo-gold img {
+    max-width: 178px !important;
+    max-height: 76px !important;
+  }
+
+  .sponsor-tier-bronze .sponsor-logo img,
+  .sponsor-logo-bronze img {
+    max-width: 174px !important;
+    max-height: 72px !important;
+  }
+
+  .sponsor-tier-silver,
+  .sponsor-tier-empty {
+    min-height: 82px !important;
+    padding: 17px 18px !important;
+  }
+}
+
+/* Patrocinadores em alto contraste no mobile */
+@media (max-width: 720px) {
+  body.high-contrast .sponsor-board {
+    width: min(100%, 430px) !important;
+    margin-inline: auto !important;
+  }
+
+  body.high-contrast .sponsor-tier {
+    padding: 18px !important;
+    min-height: auto !important;
+  }
+
+  body.high-contrast .sponsor-tier-head {
+    text-align: center !important;
+  }
+
+  body.high-contrast .sponsor-logos {
+    justify-content: center !important;
+    padding-right: 0 !important;
+  }
+
+  body.high-contrast .sponsor-tier-gold .sponsor-logo,
+  body.high-contrast .sponsor-tier-bronze .sponsor-logo,
+  body.high-contrast .sponsor-logo-gold,
+  body.high-contrast .sponsor-logo-bronze {
+    width: min(210px, 100%) !important;
+    min-width: 0 !important;
+    height: 92px !important;
+    min-height: 92px !important;
+    padding: 10px 14px !important;
+    border-radius: 14px !important;
+    background: #ffffff !important;
+    border: 1px solid #ffffff !important;
+  }
+
+  body.high-contrast .sponsor-tier-gold .sponsor

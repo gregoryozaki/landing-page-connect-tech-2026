@@ -10,6 +10,9 @@
       name="description"
       content="CONNECT Tech 2026: Conferência de Tecnologia do ICET/UFAM em Itacoatiara-AM."
     />
+    <link rel="icon" type="image/png" href="assets/img/logos/logo-light.png" />
+
+    <link rel="apple-touch-icon" href="assets/img/logos/logo-light.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -590,6 +593,12 @@
             <ul class="rules-list call-rules">
               <li>
                 <i class="bi bi-check-circle"></i>
+                Os artigos devem ter no máximo 20 páginas, excluindo as
+                referências.
+              </li>
+
+              <li>
+                <i class="bi bi-check-circle"></i>
                 Não há limite para quantidade de coautores.
               </li>
 
@@ -758,38 +767,28 @@
       </section>
 
       <section class="organization-section" id="organizacao">
-        <div class="container organization-layout">
-          <div class="organization-text reveal">
+        <div class="container organization-static">
+          <div class="section-heading reveal">
             <p class="section-label">Organização</p>
-            <h2>Organização</h2>
+            <h2>Organização e Patrocínio</h2>
 
             <p>
-              O CONNECT Tech é organizado por professores, discentes e centros
-              acadêmicos dos cursos de Engenharia de Software e Sistemas de
-              Informação do ICET/UFAM, com apoio da SBC, laboratórios de
-              pesquisa e parceiros institucionais.
+              O CONNECT Tech é realizado pelo ICET/UFAM, com participação dos
+              cursos de Engenharia de Software e Sistemas de Informação, apoio
+              institucional e patrocínio de organizações parceiras.
             </p>
           </div>
 
-          <div class="organization-carousel reveal" data-org-carousel>
-            <div
-              class="org-controls"
-              aria-label="Controle do carrossel de organização"
-            >
-              <button type="button" data-org-prev aria-label="Slide anterior">
-                <i class="bi bi-chevron-left"></i>
-              </button>
+          <div class="identity-grid reveal-group">
+            <article class="identity-card">
+              <div class="identity-card-head">
+                <span>Realização</span>
+                <h3>Instituições realizadoras</h3>
+              </div>
 
-              <button type="button" data-org-next aria-label="Próximo slide">
-                <i class="bi bi-chevron-right"></i>
-              </button>
-            </div>
-
-            <div class="org-slide active" data-org-slide>
-              <h3>Realização</h3>
-
-              <div class="org-logo-grid realizacao-grid">
+              <div class="identity-logos">
                 <a
+                  class="identity-logo"
                   href="https://www.icet.ufam.edu.br/"
                   target="_blank"
                   rel="noopener"
@@ -797,11 +796,17 @@
                   <img src="assets/img/icet-logo.png" alt="ICET UFAM" />
                 </a>
 
-                <a href="https://ufam.edu.br/" target="_blank" rel="noopener">
+                <a
+                  class="identity-logo"
+                  href="https://ufam.edu.br/"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <img src="assets/img/ufam-logo.png" alt="UFAM" />
                 </a>
 
                 <a
+                  class="identity-logo"
                   href="https://www.icet.ufam.edu.br/ultimas-noticias/117-engenharia-de-software-it16.html"
                   target="_blank"
                   rel="noopener"
@@ -813,6 +818,7 @@
                 </a>
 
                 <a
+                  class="identity-logo"
                   href="https://www.icet.ufam.edu.br/ultimas-noticias/122-sistemas-de-informacao-it01.html"
                   target="_blank"
                   rel="noopener"
@@ -823,13 +829,17 @@
                   />
                 </a>
               </div>
-            </div>
+            </article>
 
-            <div class="org-slide" data-org-slide>
-              <h3>Apoio</h3>
+            <article class="identity-card">
+              <div class="identity-card-head">
+                <span>Apoio</span>
+                <h3>Apoio institucional</h3>
+              </div>
 
-              <div class="org-logo-grid apoio-grid">
+              <div class="identity-logos support-logos">
                 <a
+                  class="identity-logo"
                   href="https://www.sbc.org.br/"
                   target="_blank"
                   rel="noopener"
@@ -841,6 +851,7 @@
                 </a>
 
                 <a
+                  class="identity-logo"
                   href="https://www.instagram.com/casi_ufam/"
                   target="_blank"
                   rel="noopener"
@@ -849,6 +860,7 @@
                 </a>
 
                 <a
+                  class="identity-logo"
                   href="https://www.instagram.com/navir_ufam/"
                   target="_blank"
                   rel="noopener"
@@ -856,65 +868,74 @@
                   <img src="assets/img/navir-logo.png" alt="NAVIR" />
                 </a>
 
-                <span>
+                <span class="identity-logo">
                   <img src="assets/img/logar-logo.png" alt="LOGAR" />
                 </span>
 
-                <span>
-                  <img
-                    src="assets/img/devsociety-logo.png"
-                    alt="DevSociety"
-                    class="devsociety-logo"
-                  />
+                <span class="identity-logo">
+                  <img src="assets/img/devsociety-logo.png" alt="DevSociety" />
                 </span>
               </div>
-            </div>
+            </article>
+          </div>
 
-            <div class="org-slide" data-org-slide>
+          <div class="sponsors-area reveal">
+            <div class="sponsors-heading">
+              <p class="section-label">Patrocinadores</p>
               <h3>Patrocinadores</h3>
-
-              <div class="org-logo-grid patrocinador-grid">
-                <a
-                  href="https://www.eldorado.org.br/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <img
-                    src="assets/img/eldorado-logo.png"
-                    alt="Instituto Eldorado"
-                  />
-                </a>
-
-                <span>
-                  <img
-                    src="assets/img/bemol-logo.png"
-                    alt="Bemol"
-                    class="bemol-logo"
-                  />
-                </span>
-              </div>
             </div>
 
-            <div class="org-dots" aria-label="Indicadores do carrossel">
-              <button
-                type="button"
-                class="active"
-                data-org-dot
-                aria-label="Realização"
-              ></button>
+            <div class="sponsor-board">
+              <article class="sponsor-tier sponsor-tier-gold">
+                <div class="sponsor-tier-head">
+                  <span class="sponsor-level">Ouro</span>
+                  <h4>Patrocinador Ouro</h4>
+                </div>
 
-              <button type="button" data-org-dot aria-label="Apoio"></button>
+                <div class="sponsor-logos">
+                  <span class="sponsor-logo sponsor-logo-gold">
+                    <img src="assets/img/bemol-logo.png" alt="Bemol" />
+                  </span>
+                </div>
+              </article>
 
-              <button
-                type="button"
-                data-org-dot
-                aria-label="Patrocinadores"
-              ></button>
+              <article class="sponsor-tier sponsor-tier-silver">
+                <div class="sponsor-tier-head">
+                  <span class="sponsor-level">Prata</span>
+                  <h4>Patrocinador Prata</h4>
+                </div>
+
+                <div
+                  class="sponsor-logos sponsor-logos-empty"
+                  aria-hidden="true"
+                >
+                  <span class="sponsor-logo sponsor-logo-placeholder"></span>
+                </div>
+              </article>
+              <article class="sponsor-tier sponsor-tier-bronze">
+                <div class="sponsor-tier-head">
+                  <span class="sponsor-level">Bronze</span>
+                  <h4>Patrocinador Bronze</h4>
+                </div>
+
+                <div class="sponsor-logos">
+                  <a
+                    class="sponsor-logo sponsor-logo-bronze"
+                    href="https://www.eldorado.org.br/"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img
+                      src="assets/img/eldorado-logo.png"
+                      alt="Instituto Eldorado"
+                    />
+                  </a>
+                </div>
+              </article>
             </div>
           </div>
         </div>
       </section>
-
       <section class="committee-section" id="comite">
         <div class="container committee-layout">
           <div class="committee-intro reveal">
