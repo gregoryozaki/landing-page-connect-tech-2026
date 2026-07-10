@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.documentElement;
   const body = document.body;
 
+  /* =========================
+     Tema
+     ========================= */
+
   const themes = ["light", "dark", "aurora"];
 
   const icons = {
@@ -27,19 +31,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setTheme(theme) {
-    activeTheme = theme;
-    root.setAttribute("data-theme", theme);
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+    activeTheme = themes.includes(theme) ? theme : "light";
+
+    root.setAttribute("data-theme", activeTheme);
+    localStorage.setItem(THEME_STORAGE_KEY, activeTheme);
 
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
       const icon = button.querySelector("i");
-      if (icon) icon.className = `bi ${icons[theme]}`;
+
+      if (icon) {
+        icon.className = `bi ${icons[activeTheme]}`;
+      }
 
       button.setAttribute(
         "aria-label",
-        `Alternar tema. Atual: ${labels[theme]}`,
+        `Alternar tema. Atual: ${labels[activeTheme]}`,
       );
-      button.setAttribute("title", labels[theme]);
+
+      button.setAttribute("title", labels[activeTheme]);
     });
 
     document.querySelectorAll("[data-theme-logo]").forEach((img) => {
@@ -51,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img.src = fallback;
       };
 
-      img.src = logoPath(img, theme);
+      img.src = logoPath(img, activeTheme);
     });
   }
 
@@ -61,12 +70,19 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const nextTheme =
         themes[(themes.indexOf(activeTheme) + 1) % themes.length];
+
       setTheme(nextTheme);
     });
   });
 
+  /* =========================
+     Header, menu mobile e voltar ao topo
+     ========================= */
+
   const header = document.querySelector("[data-header]");
   const backTop = document.querySelector("[data-back-top]");
+  const menuButton = document.querySelector("[data-menu-button]");
+  const mobileMenu = document.querySelector("[data-mobile-menu]");
 
   function handleScroll() {
     header?.classList.toggle("is-scrolled", window.scrollY > 12);
@@ -76,11 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("scroll", handleScroll, { passive: true });
   handleScroll();
 
-  const menuButton = document.querySelector("[data-menu-button]");
-  const mobileMenu = document.querySelector("[data-mobile-menu]");
-
   menuButton?.addEventListener("click", () => {
     const isOpen = mobileMenu?.classList.toggle("open");
+
     menuButton.setAttribute("aria-expanded", String(Boolean(isOpen)));
   });
 
@@ -98,6 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* =========================
+     Animações de entrada
+     ========================= */
+
   const revealItems = document.querySelectorAll(".reveal, .reveal-group");
 
   function showAllReveal() {
@@ -113,10 +131,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
         });
       },
       { threshold: 0.14 },
@@ -127,6 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
     showAllReveal();
   }
 
+  /* =========================
+     FAQ
+     ========================= */
+
   document.querySelectorAll(".faq-item").forEach((item) => {
     const button = item.querySelector(".faq-question");
     const answer = item.querySelector(".faq-answer");
@@ -136,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.querySelectorAll(".faq-item").forEach((other) => {
         other.classList.remove("open");
+
         const otherAnswer = other.querySelector(".faq-answer");
         if (otherAnswer) otherAnswer.style.maxHeight = null;
       });
@@ -146,6 +169,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  /* =========================
+     Modal das trilhas
+     ========================= */
 
   const trackData = {
     principal: {
@@ -197,25 +224,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function openTrackModal(key) {
     const data = trackData[key];
+
     if (!modal || !data) return;
 
     modalLabel.textContent = data.label;
     modalTitle.textContent = data.title;
     modalText.textContent = data.text;
-    modalList.innerHTML = data.items.map((item) => `<li>${item}</li>`).join("");
 
-    if (typeof modal.showModal === "function") modal.showModal();
-    else modal.setAttribute("open", "");
+    modalList.innerHTML = "";
+
+    data.items.forEach((itemText) => {
+      const item = document.createElement("li");
+      item.textContent = itemText;
+      modalList.appendChild(item);
+    });
+
+    if (typeof modal.showModal === "function") {
+      modal.showModal();
+    } else {
+      modal.setAttribute("open", "");
+    }
   }
 
   document.querySelectorAll("[data-track]").forEach((card) => {
-    card.addEventListener("click", () => openTrackModal(card.dataset.track));
+    card.addEventListener("click", () => {
+      openTrackModal(card.dataset.track);
+    });
 
     card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openTrackModal(card.dataset.track);
-      }
+      if (event.key !== "Enter" && event.key !== " ") return;
+
+      event.preventDefault();
+      openTrackModal(card.dataset.track);
     });
   });
 
@@ -232,6 +272,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (clickedOutside) modal.close();
   });
+
+  /* =========================
+     Carrossel dos cards da programação
+     ========================= */
 
   const mediaCards = [...document.querySelectorAll("[data-card-carousel]")];
 
@@ -261,16 +305,16 @@ document.addEventListener("DOMContentLoaded", () => {
       showCardSlide(currentSlide - 1);
     }
 
-    function startCardCarousel() {
+    function stopCardCarousel() {
       clearInterval(cardTimer);
+    }
+
+    function startCardCarousel() {
+      stopCardCarousel();
 
       if (!body.classList.contains("reduce-motion")) {
         cardTimer = setInterval(nextCardSlide, 3600);
       }
-    }
-
-    function stopCardCarousel() {
-      clearInterval(cardTimer);
     }
 
     showCardSlide(0);
@@ -290,10 +334,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     card.addEventListener("mouseenter", stopCardCarousel);
     card.addEventListener("mouseleave", startCardCarousel);
-
     card.addEventListener("focusin", stopCardCarousel);
     card.addEventListener("focusout", startCardCarousel);
   });
+
+  /* =========================
+     Painel de acessibilidade
+     ========================= */
 
   const a11yButton = document.querySelector("[data-a11y-button]");
   const a11yPanel = document.querySelector("[data-a11y-panel]");
@@ -337,6 +384,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  /* =========================
+     Aumento de fonte
+     ========================= */
+
   let fontLevel = Number(localStorage.getItem("connectech-font-level") || 0);
 
   function applyFontLevel() {
@@ -360,20 +411,37 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFontLevel();
   });
 
+  /* =========================
+     Alto contraste
+     ========================= */
+
   const contrastButton = document.querySelector("[data-contrast]");
 
-  if (localStorage.getItem("connectech-high-contrast") === "1") {
-    body.classList.add("high-contrast");
-    contrastButton?.classList.add("active");
+  function setHighContrast(active) {
+    body.classList.toggle("high-contrast", active);
+
+    contrastButton?.classList.toggle("active", active);
+    contrastButton?.setAttribute("aria-pressed", String(active));
+    contrastButton?.setAttribute(
+      "aria-label",
+      active ? "Desativar alto contraste" : "Ativar alto contraste",
+    );
+
+    localStorage.setItem("connectech-high-contrast", active ? "1" : "0");
   }
 
+  setHighContrast(localStorage.getItem("connectech-high-contrast") === "1");
+
   contrastButton?.addEventListener("click", () => {
-    const active = body.classList.toggle("high-contrast");
-    contrastButton.classList.toggle("active", active);
-    localStorage.setItem("connectech-high-contrast", active ? "1" : "0");
+    setHighContrast(!body.classList.contains("high-contrast"));
   });
 
+  /* =========================
+     Leitura em voz alta
+     ========================= */
+
   const readToggleButton = document.querySelector("[data-read-toggle]");
+
   let speechQueue = [];
   let speechIndex = 0;
   let isReading = false;
@@ -386,23 +454,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function setReadButtonState(reading) {
     isReading = reading;
 
-    if (readToggleButton) {
-      readToggleButton.textContent = reading ? "Parar" : "Ouvir";
-      readToggleButton.setAttribute(
-        "aria-label",
-        reading ? "Parar leitura da página" : "Ouvir leitura da página",
-      );
-    }
+    if (!readToggleButton) return;
+
+    readToggleButton.textContent = reading ? "Parar" : "Ouvir";
+
+    readToggleButton.setAttribute(
+      "aria-label",
+      reading ? "Parar leitura da página" : "Ouvir leitura da página",
+    );
   }
 
   function setReadButtonLoading() {
-    if (readToggleButton) {
-      readToggleButton.textContent = "Carregando...";
-      readToggleButton.setAttribute(
-        "aria-label",
-        "Carregando leitura da página",
-      );
-    }
+    if (!readToggleButton) return;
+
+    readToggleButton.textContent = "Carregando...";
+    readToggleButton.setAttribute("aria-label", "Carregando leitura da página");
   }
 
   function pickBestVoice(voices) {
@@ -431,12 +497,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let finished = false;
 
-      const finish = () => {
+      function finish() {
         if (finished) return;
 
         finished = true;
         resolve(window.speechSynthesis.getVoices());
-      };
+      }
 
       window.speechSynthesis.onvoiceschanged = finish;
       setTimeout(finish, timeout);
@@ -554,6 +620,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     };
 
+    window.speechSynthesis.resume();
     window.speechSynthesis.speak(utterance);
   }
 
@@ -564,6 +631,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.speechSynthesis.cancel();
+    window.speechSynthesis.resume();
+
     setReadButtonLoading();
 
     const voices = await waitForVoices();
@@ -588,11 +657,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   readToggleButton?.addEventListener("click", () => {
-    if (isReading || window.speechSynthesis?.speaking) {
+    if (isReading) {
       stopReading();
-    } else {
-      startReading();
+      return;
     }
+
+    startReading();
   });
 
   window.addEventListener("beforeunload", stopReading);
